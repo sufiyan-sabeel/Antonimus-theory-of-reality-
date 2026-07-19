@@ -1,0 +1,10 @@
+# Ignore all unrelated files in this directory
+*
+# Allow only the book files
+!README.md
+!antonimus.md
+!antonimus-book.html
+!antonimus-book.json
+!mkdocs.yml
+!SUMMARY.md
+!.gitignore

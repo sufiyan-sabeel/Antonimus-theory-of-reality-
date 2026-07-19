@@ -1,0 +1,63 @@
+# Antonimus Theory of Reality
+
+site_name: Antonimus Theory of Reality
+site_description: A Philosophical Framework Connecting Reality, Imagination, Knowledge, Observation, and Human Creation
+site_author: Umaiz Sufiyan
+repo_url: https://github.com/antonimus/theory-of-reality
+edit_uri: edit/main/docs
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: deep orange
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - toc.follow
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - admonition
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - 1. Introduction: s1-introduction.md
+  - 2. Universal Antonimus Law: s2-universal-law.md
+  - 3. Universal Equation: s3-universal-equation.md
+  - 4. Expanded Equation: s4-expanded-equation.md
+  - 5. Prediction Equation: s5-prediction-equation.md
+  - 6. Small Cause Law: s6-small-cause-law.md
+  - 7. Human Creation Equation: s7-creation-equation.md
+  - 8. Practical Examples: s8-examples.md
+  - 9. Laws of Antonimus: s9-laws.md
+  - 10. Mathematics: s10-mathematics.md
+  - 11. AI vs Human Intelligence: s11-ai-vs-human.md
+  - 12. Dimensions: s12-dimensions.md
+  - 13. Islam and Antonimus: s13-islam.md
+  - 14. Criticism and Evaluation: s14-criticism.md
+  - 15. Conclusion: s15-conclusion.md
+  - Appendices:
+    - A. Mathematical Exercises: appendix-a-exercises.md
+    - B. Case Study Timelines: appendix-b-case-studies.md
+    - C. Research Methods: appendix-c-research-methods.md
+    - D. Annotated Sources: appendix-d-sources.md
+    - E. Publishing Guide: appendix-e-publishing.md
+    - F. Educational Framework: appendix-f-education.md
+    - G. Equation Reference Sheets: appendix-g-equations.md
+    - H. Glossary: appendix-h-glossary.md
+    - I. Future Research Roadmap: appendix-i-roadmap.md
+    - J. Principle of Fundamental Discovery: appendix-j-principle-of-discovery.md
