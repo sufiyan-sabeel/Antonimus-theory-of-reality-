@@ -9,6 +9,7 @@ const App = (() => {
   function init() {
     consoleWarning();
     renderIntegrityBadge();
+    initMathVisualizations();
     readingProgress();
     backToTop();
     readingTime();
@@ -22,6 +23,61 @@ const App = (() => {
     restorePosition();
     collapsibleSections();
     themeDropdown();
+  }
+
+  /* ================================================================ */
+  /* MATH VISUALIZATION INITIALIZATION                               */
+  /* ================================================================ */
+  function initMathVisualizations() {
+    // Initialize function plotter
+    if (window.MathViz && window.MathViz.FunctionPlotter && document.getElementById('function-plotter')) {
+      window.antonimusPlotter = new MathViz.FunctionPlotter('function-plotter', {
+        width: 800,
+        height: 450,
+        xMin: -10,
+        xMax: 10,
+        yMin: -10,
+        yMax: 10,
+        gridStep: 1
+      });
+      // Add default functions
+      window.antonimusPlotter.addFunction(x => Math.sin(x), { color: '#4a90d9', label: 'sin(x)' });
+      window.antonimusPlotter.addFunction(x => Math.cos(x), { color: '#27ae60', label: 'cos(x)' });
+    }
+
+    // Initialize geometry diagram
+    if (window.MathViz && window.MathViz.GeometryDiagram && document.getElementById('geometry-diagram')) {
+      window.antonimusGeometry = new MathViz.GeometryDiagram('geometry-diagram', { width: 600, height: 500 });
+      window.antonimusGeometry.drawRightTriangle(3, 4);
+    }
+
+    // Initialize scientific calculator
+    if (window.MathViz && window.MathViz.ScientificCalculator && document.getElementById('scientific-calculator')) {
+      new MathViz.ScientificCalculator('scientific-calculator');
+    }
+
+    // Initialize unit converter
+    if (window.MathViz && window.MathViz.UnitConverter && document.getElementById('unit-converter')) {
+      new MathViz.UnitConverter('unit-converter');
+    }
+
+    // Initialize practice problems
+    if (window.MathViz && window.MathViz.PracticeProblems && document.getElementById('practice-problems')) {
+      new MathViz.PracticeProblems('practice-problems', { topic: 'arithmetic' });
+    }
+
+    // Initialize formula visualizer
+    if (window.MathViz && window.MathViz.FormulaVisualizer && document.getElementById('formula-visualizer')) {
+      window.antonimusFormulaViz = new MathViz.FormulaVisualizer('formula-visualizer', (params) => (x) => params.a * x * x + params.b * x + params.c, {
+        params: { a: 1, b: 0, c: 0 },
+        ranges: { a: { min: -5, max: 5, step: 0.1 }, b: { min: -5, max: 5, step: 0.1 }, c: { min: -10, max: 10, step: 0.1 } }
+      });
+    }
+
+    // Initialize dynamic chart
+    if (window.MathViz && document.getElementById('dynamic-chart')) {
+      initDynamicChart();
+    }
   }
 
   /* ---- Reading Progress ---- */

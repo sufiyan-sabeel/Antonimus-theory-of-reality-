@@ -55,6 +55,7 @@
 <!-- Styles -->
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/quiz.css">
+<link rel="stylesheet" href="css/math-viz.css">
 
 <!-- MathJax -->
 <script>
@@ -71,6 +72,9 @@ window.MathJax = {
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async integrity="sha384-9tJw3eN1L6CcnRErMVYCjlCQmFxv4h+RpY1PUk8K6jSflnYCCcH7EsPkRcO3HGD" crossorigin="anonymous"></script>
+
+<!-- Chart.js for dynamic charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-MVbQm6g7V2J9bZzQj0J9R7T9vV7Z9Y9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9" crossorigin="anonymous" async></script>
 </head>
 <body>
 
@@ -463,6 +467,10 @@ Table of Contents
 <li>
 <a href="#appendix-j">Appendix J — Principle of Fundamental
 Discovery</a>
+</li>
+<li>
+<a href="#appendix-k">Appendix K — Mathematics &amp; Visualization
+System</a>
 </li>
 <li>
 <a href="#references">References</a>
@@ -5397,6 +5405,132 @@ improve the world — from the nanoscale to the cosmic scale.</p>
   </div>
 </div>
 
+<hr class="chapter-divider">
+<h2 id="math-visualization">
+<ol start="16" type="1"><li>Mathematics & Visualization Laboratory</li></ol></h2>
+<p>This section provides interactive mathematical tools, visualizations, and practice problems to complement the theoretical framework of Antonimus. All established mathematical formulas are clearly distinguished from Antonimus conceptual models using color-coded badges.</p>
+<div class="callout callout-note" style="margin-bottom: 24px;">
+<p><strong>Notation Guide:</strong> <span class="established-math-badge"></span> = Established Mathematics (proven theorems, standard formulas) | <span class="antonimus-badge"></span> = Antonimus Conceptual Models (philosophical formalisms, not empirically validated)</p>
+</div>
+
+<h3 id="function-plotter">16.1 Interactive Function Plotter</h3>
+<p>Explore mathematical functions with zoom, pan, and real-time parameter adjustment. Compare multiple functions simultaneously.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Function Explorer</h4>
+<div class="math-viz-controls">
+<button class="math-viz-btn" onclick="addSin()" title="Add sin(x)">+ sin(x)</button>
+<button class="math-viz-btn" onclick="addCos()" title="Add cos(x)">+ cos(x)</button>
+<button class="math-viz-btn" onclick="addPoly()" title="Add polynomial">+ x²</button>
+<button class="math-viz-btn" onclick="addExp()" title="Add exponential">+ eˣ</button>
+<button class="math-viz-btn" onclick="resetPlotter()" title="Reset view">Reset</button>
+<button class="math-viz-btn export-btn" onclick="exportPlotterSVG()" title="Export as SVG">Download SVG</button>
+<button class="math-viz-btn export-btn" onclick="exportPlotterPNG()" title="Export as PNG">Download PNG</button>
+</div>
+</div>
+<div id="function-plotter" class="function-plotter"></div>
+</div>
+
+<h3 id="geometry-diagrams">16.2 Geometry Diagrams</h3>
+<p>Interactive SVG-based geometry diagrams including triangles, circles, vectors, and coordinate planes. All diagrams are resolution-independent and exportable.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Geometry Explorer</h4>
+<div class="math-viz-controls">
+<select class="geometry-type" onchange="switchGeometry(this.value)" style="padding: 6px 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+<option value="right-triangle">Right Triangle (Pythagorean)</option>
+<option value="unit-circle">Unit Circle (Trigonometry)</option>
+<option value="coordinate-plane">Coordinate Plane</option>
+<option value="vectors">Vector Addition</option>
+<option value="circle-theorems">Circle Theorems</option>
+</select>
+<button class="math-viz-btn export-btn" onclick="exportGeometrySVG()">Download SVG</button>
+<button class="math-viz-btn export-btn" onclick="exportGeometryPNG()">Download PNG</button>
+</div>
+</div>
+<div id="geometry-diagram" class="geometry-diagram"></div>
+</div>
+
+<h3 id="dynamic-charts">16.3 Dynamic Statistical Charts</h3>
+<p>Create and explore statistical visualizations using Chart.js. All charts are interactive and exportable.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Statistical Chart Builder</h4>
+<div class="math-viz-controls">
+<select class="chart-type" onchange="switchChart(this.value)" style="padding: 6px 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+<option value="line">Line Chart</option>
+<option value="bar">Bar Chart</option>
+<option value="pie">Pie Chart</option>
+<option value="scatter">Scatter Plot</option>
+<option value="histogram">Histogram</option>
+</select>
+<button class="math-viz-btn" onclick="randomizeChartData()">Randomize Data</button>
+<button class="math-viz-btn export-btn" onclick="exportChartSVG()">Download SVG</button>
+<button class="math-viz-btn export-btn" onclick="exportChartPNG()">Download PNG</button>
+</div>
+</div>
+<canvas id="dynamic-chart" class="chart-container" width="800" height="400"></canvas>
+</div>
+
+<h3 id="scientific-calculator">16.4 Scientific Calculator</h3>
+<p>Full-featured scientific calculator with trigonometric, logarithmic, exponential, and statistical functions. Supports degrees/radians and memory operations.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Scientific Calculator</h4>
+<span class="established-math-badge" style="font-size: 0.7rem;">Established Mathematics</span>
+</div>
+<div id="scientific-calculator" class="calc-container"></div>
+</div>
+
+<h3 id="unit-converter">16.5 Unit Conversion Tool</h3>
+<p>Convert between units across multiple categories: length, mass, temperature, area, volume, speed, energy, pressure, and more.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Unit Converter</h4>
+<span class="established-math-badge" style="font-size: 0.7rem;">Established Mathematics</span>
+</div>
+<div id="unit-converter" class="converter-container"></div>
+</div>
+
+<h3 id="practice-problems">16.6 Interactive Practice Problems</h3>
+<p>Generate random practice problems with step-by-step solutions across arithmetic, algebra, trigonometry, calculus, probability, statistics, linear algebra, and physics.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Practice Problem Generator</h4>
+<span class="established-math-badge" style="font-size: 0.7rem;">Established Mathematics</span>
+</div>
+<div id="practice-problems" class="practice-container"></div>
+</div>
+
+<h3 id="formula-visualizer">16.7 Formula Parameter Explorer</h3>
+<p>Visualize how variables affect outcomes in key formulas. Includes both established mathematics and Antonimus conceptual models.</p>
+<div class="math-viz-container">
+<div class="math-viz-header">
+<h4 class="math-viz-title">Formula Explorer</h4>
+<div class="math-viz-controls">
+<select id="formula-selector" onchange="loadFormula(this.value)" style="padding: 6px 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+<option value="quadratic">Quadratic Formula (established)</option>
+<option value="compound-interest">Compound Interest (established)</option>
+<option value="projectile-motion">Projectile Motion (established)</option>
+<option value="reality-formation">Reality Formation (Antonimus)</option>
+<option value="expanded-equation">Expanded Equation (Antonimus)</option>
+<option value="prediction">Prediction Equation (Antonimus)</option>
+<option value="small-cause">Small Cause Law (Antonimus)</option>
+</select>
+</div>
+</div>
+<div id="formula-visualizer" class="formula-viz"></div>
+</div>
+
+<h3 id="antonimus-vs-established">16.8 Distinguishing Established Math from Antonimus Models</h3>
+<div class="callout callout-warning">
+<p><strong>Critical Distinction:</strong> Throughout this book, mathematical notation is used in two fundamentally different ways:</p>
+<ul>
+<li><span class="established-math-badge"></span> <strong>Established Mathematics:</strong> Theorems, formulas, and principles that have been rigorously proven, experimentally validated, and accepted by the mathematical/scientific community (e.g., Pythagorean theorem, quadratic formula, Maxwell's equations, laws of thermodynamics).</li>
+<li><span class="antonimus-badge"></span> <strong>Antonimus Conceptual Models:</strong> Philosophical formalisms created by the author to structure thinking about creativity and reality formation. These are <em>not</em> empirically validated scientific laws. They use mathematical notation as a metaphorical language, not as quantitative prediction tools.</li>
+</ul>
+<p>All equation boxes, calculators, and visualizations in this book are clearly labeled with badges indicating which category they belong to. The interactive calculators for Antonimus models (Sections 3.2, 4, 5, 6, 10) compute conceptual relationships between ๐conceptual scores๐, not physical quantities.</p>
+</div>
 
 <h2 id="references">
 References and Further Reading
@@ -5582,6 +5716,7 @@ misrepresentation is prohibited by applicable law.</p>
 </script>
 <script src="js/theme.js"></script>
 <script src="js/math.js"></script>
+<script src="js/math-visualization.js"></script>
 <script src="js/search.js"></script>
 <script src="js/navigation.js"></script>
 <script src="js/app.js"></script>

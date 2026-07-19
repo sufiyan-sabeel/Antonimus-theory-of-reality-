@@ -663,6 +663,10 @@ blockquote {
 }
 .law-box h4 { color: var(--accent-brown); margin-top: 0; font-family: 'Playfair Display', serif; }
 
+/**
+ * MATH VISUALIZATION COMPONENTS
+ * ================================================================ */
+
 /* ---- Equation Boxes ---- */
 .equation-box {
   background: var(--bg-card);
@@ -694,6 +698,471 @@ blockquote {
   transition: all 0.15s ease;
 }
 .equation-box .eq-copy:hover { color: var(--accent-brown); border-color: var(--accent-gold); }
+
+/* ---- Antonimus vs Established Math Badges ---- */
+.antonimus-badge,
+.established-math-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 8px 0;
+}
+.antonimus-badge {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+}
+.established-math-badge {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+}
+.antonimus-badge svg,
+.established-math-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ---- Function Plotter ---- */
+.math-viz-container {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.math-viz-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.math-viz-title {
+  font-weight: 600;
+  color: var(--accent-brown);
+  margin-right: auto;
+  font-size: 0.9rem;
+}
+.math-viz-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+.math-viz-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+.math-viz-btn {
+  padding: 8px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.math-viz-btn:hover {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.math-viz-btn.primary {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.math-viz-btn svg { width: 14px; height: 14px; }
+
+/* Function Plotter Canvas */
+.function-plotter {
+  width: 100%;
+  height: 400px;
+  display: block;
+  background: var(--bg-primary);
+}
+
+/* ---- Geometry Diagram ---- */
+.geometry-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--bg-primary);
+}
+.geometry-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ---- Dynamic Charts ---- */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+.chart-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+/* ---- Scientific Calculator ---- */
+.calc-container {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--bg-card);
+  font-family: 'JetBrains Mono', monospace;
+  max-width: 360px;
+}
+.calc-display {
+  margin-bottom: 12px;
+}
+.calc-history {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  min-height: 1.2em;
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.calc-input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+  text-align: right;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  box-sizing: border-box;
+}
+.calc-modes {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  font-size: 0.75rem;
+}
+.calc-mode-btn {
+  flex: 1;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.calc-mode-btn.active {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.calc-btn {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.1s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.calc-btn.op {
+  background: var(--accent-gold);
+  color: white;
+  border-color: var(--accent-gold);
+}
+.calc-btn.func {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.calc-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+.calc-btn:active {
+  transform: translateY(0);
+}
+.calc-memory {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ---- Unit Converter ---- */
+.converter-container {
+  font-family: 'JetBrains Mono', monospace;
+}
+.converter-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.conv-tab {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s ease;
+}
+.conv-tab:hover, .conv-tab.active {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.conv-input-group {
+  margin-bottom: 16px;
+}
+.conv-input-group label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.conv-input-row {
+  display: flex;
+  gap: 8px;
+}
+.conv-input-row input,
+.conv-input-row select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+.conv-input-row input {
+  flex: 1;
+}
+.conv-input-row select {
+  min-width: 120px;
+}
+.conv-input-row input[readonly] {
+  background: var(--bg-secondary);
+  font-weight: bold;
+}
+.conv-swap {
+  text-align: center;
+  margin: 8px 0;
+}
+.conv-swap-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.15s ease;
+}
+.conv-swap-btn:hover {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.conv-formula {
+  margin-top: 12px;
+  padding: 10px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ---- Practice Problems ---- */
+.practice-container {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--bg-card);
+}
+.practice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.practice-header h4 {
+  margin: 0;
+  color: var(--accent-brown);
+}
+.practice-controls {
+  display: flex;
+  gap: 8px;
+}
+.practice-controls select,
+.practice-controls button {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.practice-controls select {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.practice-controls button {
+  background: var(--accent-gold);
+  color: white;
+  border-color: var(--accent-gold);
+}
+.practice-question {
+  font-size: 1.2rem;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.practice-answer {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.practice-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  font-size: 1rem;
+}
+.practice-check, .practice-show {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.practice-check {
+  border: none;
+  background: var(--accent-brown);
+  color: white;
+}
+.practice-show {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+}
+.practice-result {
+  min-height: 2em;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.practice-solution {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  border-left: 4px solid var(--accent-brown);
+}
+.practice-solution ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+.practice-solution li {
+  margin: 4px 0;
+}
+
+/* ---- Formula Visualizer ---- */
+.formula-viz {
+  padding: 16px;
+}
+.formula-viz-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.formula-param {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+.formula-param label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.formula-param input[type="range"] {
+  width: 100%;
+}
+.formula-param .param-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  color: var(--accent-brown);
+}
+.formula-viz-output {
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* ---- Export Buttons ---- */
+.export-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.export-btn:hover {
+  background: var(--accent-brown);
+  color: white;
+  border-color: var(--accent-brown);
+}
+.export-btn svg { width: 14px; height: 14px; }
 
 /* ---- Code Blocks ---- */
 pre {
