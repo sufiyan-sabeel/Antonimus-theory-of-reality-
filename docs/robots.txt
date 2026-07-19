@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /docs/icons/
 Sitemap: https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/sitemap.xml
+
+# This work is protected by copyright and licensed under CC BY 4.0.
+# Scraping for AI training or commercial republication without
+# attribution is prohibited.

@@ -27,4 +27,5 @@
 !.github/workflows/
 !.github/workflows/codeql-analysis.yml
 !SECURITY.md
+!LICENSE
 !.gitignore
