@@ -1,0 +1,17 @@
+# security.txt — Security Vulnerability Disclosure (RFC 9116)
+# This document defines the preferred process for security researchers
+# to report vulnerabilities in the Antonimus Theory of Reality project.
+
+Contact: https://github.com/sufiyan-sabeel/Antonimus-theory-of-reality-/issues
+Contact: mailto:security@antonimus-book.example.com
+Expires: 2027-07-19T00:00:00.000Z
+Encryption: https://keybase.io/security
+Acknowledgments: https://github.com/sufiyan-sabeel/Antonimus-theory-of-reality-/blob/main/SECURITY.md
+Preferred-Languages: en
+Canonical: https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/.well-known/security.txt
+Policy: https://github.com/sufiyan-sabeel/Antonimus-theory-of-reality-/blob/main/SECURITY.md
+
+# This project is a philosophical book published under CC BY 4.0.
+# Content integrity and copyright protection are the primary security concerns.
+# Unauthorized reproduction, misattribution, or misrepresentation of this work
+# should be reported via the GitHub Issues page linked above.

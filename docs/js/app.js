@@ -7,6 +7,8 @@ const App = (() => {
   const STORAGE_PREFIX = 'antonimus-';
 
   function init() {
+    consoleWarning();
+    renderIntegrityBadge();
     readingProgress();
     backToTop();
     readingTime();
@@ -359,6 +361,118 @@ const App = (() => {
         toggle.style.transform = collapsed ? 'rotate(0deg)' : 'rotate(-90deg)';
       });
     });
+  }
+
+  /* ================================================================ */
+  /* Console API — Public API Anti-Theft Warning                      */
+  /* Uses the browser's native Console API to display copyright        */
+  /* notice when developer tools are opened.                          */
+  /* ================================================================ */
+  function consoleWarning() {
+    const styles = [
+      'font-size: 24px',
+      'font-weight: bold',
+      'color: #e74c3c',
+      'padding: 10px 20px',
+      'background: #1a1a2e',
+      'border: 2px solid #e74c3c',
+      'border-radius: 4px',
+      'line-height: 1.5'
+    ];
+    const linkStyle = [
+      'color: #3498db',
+      'text-decoration: underline'
+    ];
+    console.log(
+      '%c' + '  ANTONIMUS THEORY OF REALITY  ', styles.join(';')
+    );
+    console.log(
+      '%c' + 'Copyright (c) 2026 Umaiz Sufiyan. All rights reserved.',
+      'font-size: 14px; color: #bdc3c7; padding: 5px 0;'
+    );
+    console.log(
+      '%c' + 'This work is licensed under CC BY 4.0. Unauthorized reproduction,',
+      'font-size: 12px; color: #95a5a6;'
+    );
+    console.log(
+      '%c' + 'redistribution, or misrepresentation is prohibited by applicable law.',
+      'font-size: 12px; color: #95a5a6;'
+    );
+    console.log(
+      '%c' + 'Attribution required: https://creativecommons.org/licenses/by/4.0/',
+      'font-size: 12px; color: #3498db;'
+    );
+    console.log(
+      '%c' + 'Report violations: https://github.com/sufiyan-sabeel/Antonimus-theory-of-reality-/issues',
+      'font-size: 12px; color: #3498db;'
+    );
+
+    // Override console.log to persist warning (deters casual theft)
+    const origLog = console.log.bind(console);
+    let warnedOnce = false;
+    console.log = function() {
+      if (!warnedOnce) {
+        warnedOnce = true;
+        origLog(
+          '%c[Copyright] This content is protected intellectual property.',
+          'color: #e74c3c; font-size: 11px;'
+        );
+      }
+      origLog.apply(console, arguments);
+    };
+  }
+
+  /* ================================================================ */
+  /* Canvas API — Public API Content Integrity Badge                  */
+  /* Uses the Canvas API to render a verification badge showing        */
+  /* that this is authentic content from the original author.         */
+  /* ================================================================ */
+  function renderIntegrityBadge() {
+    var badge = document.getElementById('integrity-badge');
+    if (!badge) return;
+    try {
+      var canvas = document.createElement('canvas');
+      canvas.width = 150;
+      canvas.height = 22;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      var style = getComputedStyle(document.documentElement);
+      var cardBg = (style.getPropertyValue('--card-bg') || '#1a1a2e').trim();
+      var accent = (style.getPropertyValue('--accent') || '#4a90d9').trim();
+      var textColor = (style.getPropertyValue('--text-color') || '#e0e0e0').trim();
+      // Background rounded rect (manual for compatibility)
+      var r = 4, w = 150, h = 22;
+      ctx.beginPath();
+      ctx.moveTo(r, 0);
+      ctx.lineTo(w - r, 0);
+      ctx.quadraticCurveTo(w, 0, w, r);
+      ctx.lineTo(w, h - r);
+      ctx.quadraticCurveTo(w, h, w - r, h);
+      ctx.lineTo(r, h);
+      ctx.quadraticCurveTo(0, h, 0, h - r);
+      ctx.lineTo(0, r);
+      ctx.quadraticCurveTo(0, 0, r, 0);
+      ctx.closePath();
+      ctx.fillStyle = cardBg;
+      ctx.fill();
+      ctx.strokeStyle = accent;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      // Verified checkmark
+      ctx.fillStyle = '#27ae60';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillText('\u2713', 8, 15);
+      // Text
+      ctx.fillStyle = textColor;
+      ctx.font = '10px sans-serif';
+      ctx.fillText('Verified Original', 24, 14);
+      // Replace badge content with canvas
+      while (badge.firstChild) badge.removeChild(badge.firstChild);
+      badge.appendChild(canvas);
+      badge.title = 'This content is verified original work by Umaiz Sufiyan. Licensed under CC BY 4.0.';
+    } catch (e) {
+      // Canvas not supported — skip gracefully
+    }
   }
 
   return { init };
