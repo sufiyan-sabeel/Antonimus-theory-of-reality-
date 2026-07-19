@@ -7,4 +7,7 @@
 !antonimus-book.json
 !mkdocs.yml
 !SUMMARY.md
+!docs/
+!docs/index.html
+!docs/README.md
 !.gitignore
