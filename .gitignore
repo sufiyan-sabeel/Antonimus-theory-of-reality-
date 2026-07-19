@@ -24,6 +24,7 @@
 !docs/robots.txt
 !docs/.well-known/
 !docs/.well-known/security.txt
+!docs/security.txt
 !.github/
 !.github/dependabot.yml
 !.github/workflows/
