@@ -1,0 +1,33 @@
+# Dependabot configuration for automated dependency updates
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5
+
+  # npm (if package.json is added in future)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "fix"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5
+    # Security updates only (ignore non-security bumps)
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]

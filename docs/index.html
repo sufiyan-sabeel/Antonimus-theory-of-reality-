@@ -38,6 +38,12 @@
 }
 </script>
 
+<!-- Security Headers (meta equivalent for GitHub Pages) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
+
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.svg" sizes="192x192">
@@ -64,7 +70,7 @@ window.MathJax = {
   }
 };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async integrity="sha384-9tJw3eN1L6CcnRErMVYCjlCQmFxv4h+RpY1PUk8K6jSflnYCCcH7EsPkRcO3HGD" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -5540,6 +5546,8 @@ its development.</em><br><br> First published: July 2026</p>
 <!-- ============================================================ -->
 <!-- JAVASCRIPT MODULES                                           -->
 <!-- ============================================================ -->
+<!-- Security must load first (dependency for other modules) -->
+<script src="js/security.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/math.js"></script>
 <script src="js/search.js"></script>
@@ -5547,5 +5555,6 @@ its development.</em><br><br> First published: July 2026</p>
 <script src="js/app.js"></script>
 <script src="js/pwa.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/icons.js"></script>
 </body>
 </html>

@@ -22,4 +22,9 @@
 !docs/manifest.json
 !docs/sitemap.xml
 !docs/robots.txt
+!.github/
+!.github/dependabot.yml
+!.github/workflows/
+!.github/workflows/codeql-analysis.yml
+!SECURITY.md
 !.gitignore
