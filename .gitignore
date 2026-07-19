@@ -14,6 +14,7 @@
 !docs/css/styles.css
 !docs/js/
 !docs/js/*.js
+!docs/css/quiz.css
 !docs/icons/
 !docs/icons/*
 !docs/sw.js
