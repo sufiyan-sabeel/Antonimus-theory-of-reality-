@@ -143,6 +143,108 @@ const Security = (() => {
     return document.createTextNode(String(text));
   }
 
+  /* ================================================================ */
+  /* Web Crypto API — Public API Integrity Verification                */
+  /* Uses the browser's native SubtleCrypto for SHA-256 hashing        */
+  /* ================================================================ */
+
+  /**
+   * Check if the Web Crypto API is available.
+   * This is a standard public API available in all modern browsers.
+   */
+  function isCryptoAvailable() {
+    return typeof window !== 'undefined' &&
+      window.crypto &&
+      window.crypto.subtle &&
+      typeof window.crypto.subtle.digest === 'function';
+  }
+
+  /**
+   * Compute a SHA-256 hex digest of a string using the Web Crypto API.
+   * This can be used to verify content integrity without loading external
+   * hashing libraries.
+   * @param {string} data - The data to hash
+   * @returns {Promise<string>} Hex-encoded SHA-256 hash
+   */
+  async function sha256(data) {
+    if (!isCryptoAvailable()) {
+      throw new Error('Web Crypto API not available');
+    }
+    const encoder = new TextEncoder();
+    const buffer = encoder.encode(String(data));
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', buffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  /**
+   * Verify a SHA-256 hash against a known value.
+   * Useful for checking if dynamically loaded content has been tampered with.
+   * @param {string} data - The data to verify
+   * @param {string} expectedHash - The expected SHA-256 hex hash
+   * @returns {Promise<boolean>} Whether the hash matches
+   */
+  async function verifyHash(data, expectedHash) {
+    try {
+      const actual = await sha256(data);
+      // Constant-time comparison to prevent timing attacks
+      if (actual.length !== expectedHash.length) return false;
+      let result = 0;
+      for (let i = 0; i < actual.length; i++) {
+        result |= actual.charCodeAt(i) ^ expectedHash.charCodeAt(i);
+      }
+      return result === 0;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /**
+   * Fetch a resource and verify its SHA-256 hash against an expected value.
+   * Uses the Fetch API + Web Crypto API for end-to-end integrity checking.
+   * @param {string} url - The URL to fetch
+   * @param {string} expectedHash - Expected SHA-256 hex hash
+   * @returns {Promise<{ok: boolean, data: string|null, error: string|null}>}
+   */
+  async function fetchAndVerify(url, expectedHash) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        return { ok: false, data: null, error: 'HTTP ' + response.status };
+      }
+      const text = await response.text();
+      const valid = await verifyHash(text, expectedHash);
+      return {
+        ok: valid,
+        data: valid ? text : null,
+        error: valid ? null : 'Hash mismatch: content may have been tampered with'
+      };
+    } catch (e) {
+      return { ok: false, data: null, error: e.message };
+    }
+  }
+
+  /**
+   * Generate a random content integrity nonce using the Web Crypto API.
+   * Useful for inline script/style CSP nonces.
+   * @param {number} length - Number of bytes (default 16 = 128 bits)
+   * @returns {Promise<string>} Base64-encoded nonce
+   */
+  async function generateNonce(length = 16) {
+    if (!isCryptoAvailable()) {
+      // Fallback for older browsers
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+    const buffer = new Uint8Array(length);
+    window.crypto.getRandomValues(buffer);
+    return btoa(String.fromCharCode.apply(null, buffer));
+  }
+
   return {
     escapeHtml,
     sanitizeAttribute,
@@ -156,6 +258,12 @@ const Security = (() => {
     getStorage,
     setStorage,
     removeStorage,
-    createText
+    createText,
+    /* Web Crypto API methods */
+    isCryptoAvailable,
+    sha256,
+    verifyHash,
+    fetchAndVerify,
+    generateNonce
   };
 })();

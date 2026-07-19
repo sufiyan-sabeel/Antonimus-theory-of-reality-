@@ -26,6 +26,7 @@
 !.github/dependabot.yml
 !.github/workflows/
 !.github/workflows/codeql-analysis.yml
+!.github/workflows/security-audit.yml
 !SECURITY.md
 !LICENSE
 !.gitignore
