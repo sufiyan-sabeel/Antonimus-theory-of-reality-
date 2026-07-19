@@ -5,60 +5,216 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antonimus Theory of Reality</title>
 <style>
-  /* Book-style CSS */
+  /* ================================================================ */
+  /* ANTONIMUS PHILOSOPHY BOOK THEME                                  */
+  /* Elegant vintage-inspired design with modern animations           */
+  /* ================================================================ */
+  
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
+  
   @page { margin: 25mm 30mm 25mm 30mm; size: A5; }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: 11pt;
-    line-height: 1.6;
-    color: #1a1a1a;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: justify;
-    hyphens: auto;
+  /* ---- Reading Progress Bar ---- */
+  #reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #8B0000, #CD853F, #8B4513);
+    z-index: 1000;
+    transition: width 0.3s ease;
+    box-shadow: 0 1px 4px rgba(139,0,0,0.3);
   }
   
-  /* Title page */
+  body {
+    font-family: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.8;
+    color: #2c1810;
+    background: #f5f0e8;
+    background-image: 
+      radial-gradient(ellipse at 10% 20%, rgba(255, 248, 230, 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(230, 220, 200, 0.3) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c5a9' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    text-align: justify;
+    hyphens: auto;
+    min-height: 100vh;
+    box-shadow: 0 0 60px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  
+  /* ---- Decorative page border ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 12px solid transparent;
+    border-image: linear-gradient(135deg, #8B4513 0%, #CD853F 25%, #D2B48C 50%, #CD853F 75%, #8B4513 100%) 12;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.3;
+  }
+  
+  /* ---- Smooth Scroll ---- */
+  html { scroll-behavior: smooth; }
+  
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 8pt;
+    font-weight: 600;
+    margin-right: 4px;
+    border-radius: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .tag-science { background: rgba(26, 82, 118, 0.1); color: #1a5276; }
+  .tag-philosophy { background: rgba(108, 52, 131, 0.1); color: #6c3483; }
+  .tag-islam { background: rgba(26, 122, 46, 0.1); color: #1a7a2e; }
+  .tag-antonimus { background: rgba(139, 69, 19, 0.1); color: #8B4513; }
+  
+  /* ---- Title Page ---- */
   .title-page {
     page-break-after: always;
     text-align: center;
-    padding-top: 120px;
+    padding: 100px 30px 60px;
     margin-bottom: 60px;
-  }
-  .title-page h1 {
-    font-size: 24pt;
-    color: #1a237e;
-    border: none;
-    margin-bottom: 15px;
-    line-height: 1.3;
-  }
-  .title-page .subtitle {
-    font-size: 14pt;
-    color: #555;
-    font-style: italic;
-    margin-bottom: 40px;
-  }
-  .title-page .author {
-    font-size: 12pt;
-    color: #333;
-    margin-top: 30px;
-  }
-  .title-page .meta {
-    font-size: 10pt;
-    color: #888;
-    margin-top: 50px;
-    line-height: 1.8;
+    position: relative;
+    animation: fadeInBook 1.5s ease-out;
   }
   
-  /* Headings */
-  h1 { font-size: 18pt; color: #1a237e; border-bottom: 2px solid #1a237e; padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; page-break-before: always; }
-  h2 { font-size: 14pt; color: #283593; margin-top: 25px; margin-bottom: 10px; border-left: 4px solid #3949ab; padding-left: 12px; }
-  h3 { font-size: 12pt; color: #3949ab; margin-top: 20px; margin-bottom: 8px; }
-  h4 { font-size: 11pt; color: #1a237e; margin-top: 15px; margin-bottom: 6px; }
+  .title-page::before {
+    content: '\2766';
+    font-size: 36pt;
+    color: #8B4513;
+    display: block;
+    margin-bottom: 20px;
+    opacity: 0.5;
+    animation: ornamentPulse 3s ease-in-out infinite;
+  }
+  
+  .title-page::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8B4513, #CD853F, #8B4513, transparent);
+  }
+  
+  @keyframes ornamentPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+  
+  @keyframes fadeInBook {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  .title-page h1 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 30pt;
+    font-weight: 700;
+    color: #3e1f0d;
+    border: none;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+  }
+  
+  .title-page .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15pt;
+    color: #5c3a1e;
+    font-style: italic;
+    margin-bottom: 35px;
+    line-height: 1.5;
+    padding: 0 20px;
+  }
+  
+  .title-page .author {
+    font-size: 12pt;
+    color: #3e1f0d;
+    margin-top: 25px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .title-page .meta {
+    font-size: 10pt;
+    color: #8B7355;
+    margin-top: 45px;
+    line-height: 2;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  /* ---- Headings ---- */
+  h1 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 22pt;
+    font-weight: 600;
+    color: #3e1f0d;
+    border-bottom: 2px solid #CD853F;
+    padding-bottom: 10px;
+    margin-top: 35px;
+    margin-bottom: 18px;
+    page-break-before: always;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  h1::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #8B4513;
+  }
+  
+  h2 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 16pt;
+    font-weight: 600;
+    color: #4a2c14;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    padding-left: 14px;
+    border-left: 4px solid #CD853F;
+    position: relative;
+    scroll-margin-top: 10px;
+  }
+  
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #5c3a1e;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-style: italic;
+    scroll-margin-top: 10px;
+  }
+  
+  h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: #3e1f0d;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
   
   /* First heading after title page should not have page-break */
   .first-section { page-break-before: avoid; }
@@ -66,80 +222,209 @@
   /* Paragraphs */
   p { margin: 0.6em 0; text-indent: 0; }
   
-  /* Tables */
-  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 9.5pt; page-break-inside: avoid; }
-  th { background: #1a237e; color: white; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 9pt; }
-  td { padding: 5px 8px; border-bottom: 1px solid #ddd; }
-  tr:nth-child(even) td { background: #f8f9ff; }
+  /* ---- Tables with reveal animation ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 10.5pt;
+    page-break-inside: avoid;
+  }
+  th {
+    background: linear-gradient(135deg, #3e1f0d, #5c3a1e);
+    color: #f5f0e8;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10pt;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+  }
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #d4c5a9;
+  }
+  tr:nth-child(even) td { background: rgba(205, 133, 63, 0.05); }
+  tr:hover td { background: rgba(205, 133, 63, 0.1); transition: background 0.3s ease; }
   
-  /* Blockquotes */
-  blockquote { border-left: 3px solid #3949ab; background: #f5f7ff; padding: 8px 15px; margin: 12px 0; font-style: italic; }
+  /* ---- Blockquotes ---- */
+  blockquote {
+    border-left: 3px solid #CD853F;
+    background: rgba(205, 133, 63, 0.06);
+    padding: 12px 20px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #4a2c14;
+    border-radius: 0 4px 4px 0;
+  }
   
-  /* Callout boxes simplified for print */
-  .callout { padding: 10px 15px; margin: 12px 0; border-left: 4px solid #333; background: #f5f5f5; font-size: 10pt; page-break-inside: avoid; }
-  .callout-science { border-color: #1a73e8; background: #e8f0fe; }
-  .callout-philosophy { border-color: #7b1fa2; background: #f3e8fd; }
-  .callout-islam { border-color: #2e7d32; background: #e8f5e9; }
-  .callout-antonimus { border-color: #e65100; background: #fff8e1; }
-  .callout-warning { border-color: #c62828; background: #fce4ec; }
-  .callout-note { border-color: #00695c; background: #e0f2f1; }
-  .callout-example { border-color: #616161; background: #f5f5f5; }
+  /* ---- Callout Boxes ---- */
+  .callout {
+    padding: 14px 18px;
+    margin: 15px 0;
+    border-left: 5px solid #8B7355;
+    background: rgba(245, 240, 232, 0.8);
+    font-size: 10.5pt;
+    page-break-inside: avoid;
+    border-radius: 0 6px 6px 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .callout-science { border-color: #1a5276; background: rgba(26, 82, 118, 0.06); }
+  .callout-science strong { color: #1a5276; }
+  .callout-philosophy { border-color: #6c3483; background: rgba(108, 52, 131, 0.06); }
+  .callout-philosophy strong { color: #6c3483; }
+  .callout-islam { border-color: #1a7a2e; background: rgba(26, 122, 46, 0.06); }
+  .callout-islam strong { color: #1a7a2e; }
+  .callout-antonimus { border-color: #8B4513; background: rgba(139, 69, 19, 0.06); }
+  .callout-antonimus strong { color: #8B4513; }
+  .callout-warning { border-color: #922b21; background: rgba(146, 43, 33, 0.06); }
+  .callout-warning strong { color: #922b21; }
+  .callout-note { border-color: #1a6c5c; background: rgba(26, 108, 92, 0.06); }
+  .callout-note strong { color: #1a6c5c; }
+  .callout-example { border-color: #5d6d7e; background: rgba(93, 109, 126, 0.06); }
+  .callout-example strong { color: #5d6d7e; }
   
-  /* Law boxes */
-  .law-box { border: 1px solid #ffe082; background: #fff8e1; padding: 12px 16px; margin: 10px 0; border-radius: 4px; page-break-inside: avoid; }
-  .law-box h4 { color: #e65100; margin-top: 0; }
+  /* ---- Law Boxes ---- */
+  .law-box {
+    border: 1px solid #DEC29B;
+    background: rgba(255, 248, 230, 0.6);
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 6px;
+    page-break-inside: avoid;
+  }
+  .law-box h4 { color: #8B4513; margin-top: 0; font-family: 'Playfair Display', serif; }
   
-  /* Equation boxes */
-  .equation-box { background: #fafafa; border: 1px solid #e0e0e0; padding: 12px; text-align: center; margin: 12px 0; page-break-inside: avoid; }
+  /* ---- Equation Boxes ---- */
+  .equation-box {
+    background: rgba(250, 245, 238, 0.9);
+    border: 1px solid #DEC29B;
+    padding: 15px;
+    text-align: center;
+    margin: 15px 0;
+    page-break-inside: avoid;
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(139,69,19,0.06);
+  }
   
-  /* Code blocks */
-  pre { background: #f5f5f5; border: 1px solid #e0e0e0; padding: 8px 12px; font-size: 9pt; font-family: 'Courier New', monospace; overflow-x: auto; }
+  /* ---- Code Blocks ---- */
+  pre {
+    background: rgba(245, 240, 232, 0.7);
+    border: 1px solid #d4c5a9;
+    padding: 10px 14px;
+    font-size: 9.5pt;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+    border-radius: 4px;
+    color: #3e1f0d;
+  }
   
-  /* Image captions */
-  .img-caption { text-align: center; font-style: italic; color: #555; font-size: 9pt; margin-top: -10px; margin-bottom: 15px; }
-  img { max-width: 100%; margin: 15px 0; }
+  /* ---- Image Captions ---- */
+  .img-caption { text-align: center; font-style: italic; color: #8B7355; font-size: 9.5pt; margin-top: -10px; margin-bottom: 15px; }
+  img {
+    max-width: 100%;
+    margin: 18px 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
   
-  /* Tags */
-  .tag { display: inline-block; padding: 1px 8px; font-size: 8pt; font-weight: bold; margin-right: 4px; border-radius: 8px; }
-  .tag-science { background: #e8f0fe; color: #1a73e8; }
-  .tag-philosophy { background: #f3e8fd; color: #7b1fa2; }
-  .tag-islam { background: #e8f5e9; color: #2e7d32; }
-  .tag-antonimus { background: #fff8e1; color: #e65100; }
+
   
-  /* TOC */
-  .toc { margin: 20px 0; page-break-after: always; }
-  .toc h3 { text-align: center; font-size: 14pt; border-bottom: 2px solid #1a237e; padding-bottom: 10px; }
+  /* ---- TOC ---- */
+  .toc {
+    margin: 25px 0;
+    page-break-after: always;
+    opacity: 0;
+    animation: fadeInBook 1s ease-out 0.5s forwards;
+  }
+  .toc h3 {
+    text-align: center;
+    font-size: 16pt;
+    font-family: 'Playfair Display', serif;
+    border-bottom: 2px solid #CD853F;
+    padding-bottom: 12px;
+    color: #3e1f0d;
+  }
   .toc ul { list-style: none; padding: 0; }
-  .toc li { padding: 3px 0; font-size: 10pt; }
-  .toc a { color: #283593; text-decoration: none; }
+  .toc li {
+    padding: 4px 0;
+    font-size: 10.5pt;
+    border-bottom: 1px dotted rgba(205, 133, 63, 0.2);
+  }
+  .toc li:last-child { border-bottom: none; }
+  .toc a {
+    color: #5c3a1e;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+  }
+  .toc a:hover { color: #8B4513; padding-left: 6px; }
   
-  /* Chapter divider */
-  hr { border: none; height: 1px; background: linear-gradient(to right, transparent, #999, transparent); margin: 30px 0; }
+  /* ---- Horizontal Rules / Ornamental Dividers ---- */
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #CD853F, transparent);
+    margin: 30px 0;
+  }
   
-  /* Footer */
-  .doc-footer { text-align: center; color: #666; font-size: 9pt; border-top: 1px solid #ccc; padding-top: 15px; margin-top: 30px; }
+  /* ---- Footer ---- */
+  .doc-footer {
+    text-align: center;
+    color: #8B7355;
+    font-size: 9.5pt;
+    border-top: 1px solid #d4c5a9;
+    padding-top: 15px;
+    margin-top: 35px;
+    font-style: italic;
+  }
   
-  /* Lists */
-  ul, ol { margin: 8px 0; padding-left: 25px; }
-  li { margin: 3px 0; }
+  /* ---- Lists ---- */
+  ul, ol { margin: 10px 0; padding-left: 28px; }
+  li { margin: 4px 0; }
   
-  /* Abstract */
-  .abstract-box { background: #f5f7ff; border: 1px solid #c5cae9; padding: 15px 20px; margin: 15px 0; }
+  /* ---- Abstract ---- */
+  .abstract-box {
+    background: rgba(205, 133, 63, 0.06);
+    border: 1px solid #DEC29B;
+    padding: 18px 22px;
+    margin: 18px 0;
+    border-radius: 6px;
+    font-style: italic;
+  }
   
-  /* Page breaks before chapters */
-  .chapter-divider { margin: 30px 0; }
-  .section-divider { margin: 15px 0; }
+  /* ---- Dividers ---- */
+  .chapter-divider { margin: 35px 0; position: relative; }
+  .section-divider { margin: 18px 0; }
   
+  /* ---- Print ---- */
   @media print {
-    body { padding: 0; max-width: none; font-size: 10pt; }
+    body {
+      font-size: 10pt;
+      max-width: none;
+      padding: 0;
+      background: white;
+      box-shadow: none;
+    }
+    body::before { display: none; }
     .title-page { padding-top: 80px; }
     h1 { page-break-before: always; }
     h2 { page-break-before: always; }
     h1:first-of-type { page-break-before: avoid; }
   }
+  
+  /* ---- Responsive ---- */
+  @media (max-width: 600px) {
+    body { padding: 15px 12px; font-size: 11pt; }
+    body::before { border-width: 6px; }
+    .title-page h1 { font-size: 22pt; }
+    .title-page .subtitle { font-size: 13pt; }
+  }
 </style>
 </head>
 <body>
+<div id="reading-progress"></div>
 
 <div class="title-page">
 <h1>Antonimus Theory of Reality</h1>
@@ -4079,6 +4364,111 @@ its development.</em><br><br> First published: July 2026</p>
 Author: <strong>Umaiz Sufiyan</strong><br>
 <em>This document is a philosophical work. It is not a scientific publication and has not been peer-reviewed through scientific channels.</em>
 </div>
+
+<!-- ============================================================ -->
+<!-- ANIMATION & INTERACTION SCRIPTS                              -->
+<!-- ============================================================ -->
+<script>
+(function() {
+  'use strict';
+  
+  // ---- Reading Progress Bar ----
+  const progressBar = document.getElementById('reading-progress');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+  window.addEventListener('scroll', updateProgress);
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+  
+  // ---- Scroll-Triggered Reveal Animations ----
+  const revealElements = document.querySelectorAll(
+    '.callout, .law-box, .equation-box, table, img'
+  );
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+  
+  revealElements.forEach(el => observer.observe(el));
+  
+  // ---- Section fade-in for major headings ----
+  const sections = document.querySelectorAll('h2, h3, .abstract-box, .toc');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '0';
+        entry.target.style.transform = 'translateY(20px)';
+        entry.target.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        requestAnimationFrame(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        });
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  
+  sections.forEach(el => {
+    // Skip elements already inside a revealed parent
+    if (!el.closest('.callout, .law-box, .equation-box')) {
+      sectionObserver.observe(el);
+    }
+  });
+  
+  // ---- Ornamental Divider Insertion ----
+  const dividers = document.querySelectorAll('hr.chapter-divider');
+  dividers.forEach(hr => {
+    const ornament = document.createElement('div');
+    ornament.className = 'ornament-divider';
+    ornament.innerHTML = '\u2767 \u2022 \u2767';
+    ornament.style.cssText = 'text-align:center;margin:25px 0;color:#CD853F;font-size:16pt;letter-spacing:10px;opacity:0.4;user-select:none;';
+    hr.parentNode.insertBefore(ornament, hr.nextSibling);
+  });
+  
+  // ---- Pull Quote Detection ----
+  // Any blockquote that is the only content in a section becomes a pull quote
+  // (keeps existing blockquote styling, just visual enhancement)
+  
+  // ---- Smooth hash scroll offset ----
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const offset = 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+  
+  // ---- Initial reveal for elements already visible ----
+  setTimeout(() => {
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('revealed');
+        observer.unobserve(el);
+      }
+    });
+  }, 200);
+  
+})();
+</script>
 
 </body>
 </html>
