@@ -109,8 +109,10 @@ const Navigation = (() => {
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const main = document.querySelector('.main-content');
+    const overlay = document.getElementById('sidebar-overlay');
     sidebar.classList.toggle('open');
     main.classList.toggle('sidebar-open');
+    if (overlay) overlay.classList.toggle('open');
   }
 
   function init() {
@@ -118,9 +120,10 @@ const Navigation = (() => {
     scrollSpy();
 
     // Sidebar toggle
-    document.querySelectorAll('.menu-btn, .sidebar-close, .sidebar-overlay').forEach(el => {
+    document.querySelectorAll('.menu-btn, .sidebar-close').forEach(el => {
       el?.addEventListener('click', toggleSidebar);
     });
+    document.getElementById('sidebar-overlay')?.addEventListener('click', toggleSidebar);
 
     // Close sidebar on nav click (mobile)
     document.querySelectorAll('#sidebar-nav a').forEach(a => {
