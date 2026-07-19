@@ -13,6 +13,7 @@
 !docs/css/
 !docs/css/styles.css
 !docs/js/
+!docs/js/icons.js
 !docs/js/*.js
 !docs/css/quiz.css
 !docs/icons/

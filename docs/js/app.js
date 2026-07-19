@@ -340,8 +340,8 @@ const App = (() => {
       if (h2.closest('.title-page')) return;
 
       const toggle = document.createElement('span');
-      toggle.textContent = ' \u25BC';
-      toggle.style.cssText = 'cursor:pointer;font-size:0.6rem;margin-left:8px;color:var(--text-muted);transition:transform 0.2s;display:inline-block;';
+      toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>';
+      toggle.style.cssText = 'cursor:pointer;margin-left:8px;color:var(--text-muted);transition:transform 0.2s;display:inline-flex;align-items:center;';
       toggle.title = 'Collapse/Expand section';
       h2.appendChild(toggle);
 
@@ -356,7 +356,6 @@ const App = (() => {
         const collapsed = toggle.dataset.collapsed === 'true';
         siblings.forEach(s => { s.style.display = collapsed ? '' : 'none'; });
         toggle.dataset.collapsed = collapsed ? 'false' : 'true';
-        toggle.textContent = collapsed ? ' \u25BC' : ' \u25B6';
         toggle.style.transform = collapsed ? 'rotate(0deg)' : 'rotate(-90deg)';
       });
     });

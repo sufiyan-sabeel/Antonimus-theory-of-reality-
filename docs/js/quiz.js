@@ -702,11 +702,11 @@ const QuizUI = (() => {
 
     if (result.correct) {
       score++;
-      resultDiv.innerHTML = `<div class="quiz-correct">&#10004; Correct! Well done.</div>`;
+      resultDiv.innerHTML = `<div class="quiz-correct"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:4px;"><polyline points="20 6 9 17 4 12"/></svg> Correct! Well done.</div>`;
       resultDiv.className = 'quiz-result quiz-result-correct';
       ProgressAPI.recordCorrect(q.chapterId, q.difficulty);
     } else {
-      resultDiv.innerHTML = `<div class="quiz-incorrect">&#10008; Not quite. ${result.expectedAnswer ? 'Expected: ' + result.expectedAnswer : ''}</div>`;
+      resultDiv.innerHTML = `<div class="quiz-incorrect"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:4px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Not quite. ${result.expectedAnswer ? 'Expected: ' + result.expectedAnswer : ''}</div>`;
       resultDiv.className = 'quiz-result quiz-result-incorrect';
 
       // Show explanation automatically for incorrect answers
@@ -740,15 +740,15 @@ const QuizUI = (() => {
     const perfect = score === currentQuestions.length;
 
     let badges = '';
-    if (perfect) badges += '<span class="badge badge-gold">&#9733; Perfect Score</span>';
-    if (pct >= 80) badges += '<span class="badge badge-silver">&#9733; Mastery</span>';
-    if (pct >= 60) badges += '<span class="badge badge-bronze">&#9733; Passed</span>';
+    if (perfect) badges += '<span class="badge badge-gold"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Perfect Score</span>';
+    if (pct >= 80) badges += '<span class="badge badge-silver"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Mastery</span>';
+    if (pct >= 60) badges += '<span class="badge badge-bronze"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Passed</span>';
 
     ProgressAPI.completeAttempt(currentQuestions[0]?.chapterId, score, currentQuestions.length);
     checkAchievements();
 
     body.innerHTML = `<div class="quiz-completion">
-      <div class="quiz-completion-icon">${perfect ? '&#127942;' : '&#9989;'}</div>
+      <div class="quiz-completion-icon">${perfect ? '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>'}</div>
       <h3>Quiz Complete!</h3>
       <div class="quiz-score-final">${score} / ${currentQuestions.length} (${pct}%)</div>
       <div class="quiz-badges">${badges}</div>
@@ -868,7 +868,7 @@ const QuizUI = (() => {
   function showChallenge(containerId, chapterId) {
     const body = document.getElementById(containerId + '-body');
     body.innerHTML = `<div class="quiz-challenge-setup">
-      <h4>&#9200; Challenge Mode</h4>
+      <h4><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Challenge Mode</h4>
       <p>Answer as many questions as possible within the time limit!</p>
       <label>Time Limit:
         <select id="${containerId}-challenge-time" class="quiz-select">
@@ -1007,7 +1007,7 @@ const QuizUI = (() => {
 
     const body = document.getElementById(containerId + '-body');
     body.innerHTML = `<div class="quiz-completion">
-      <div class="quiz-completion-icon">&#9200;</div>
+      <div class="quiz-completion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
       <h3>Challenge Complete!</h3>
       <div class="quiz-score-final">${challengeScore} / ${challengeTotal} (${accuracy}%)</div>
       <div class="quiz-completion-actions">
@@ -1053,7 +1053,7 @@ const QuizUI = (() => {
     achievements.forEach(a => {
       const notif = document.createElement('div');
       notif.className = 'achievement-popup';
-      notif.innerHTML = `<div class="achievement-icon">&#127942;</div>
+      notif.innerHTML = `<div class="achievement-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
         <div class="achievement-info">
           <div class="achievement-name">${a.name}</div>
           <div class="achievement-desc">${a.desc}</div>
@@ -1067,14 +1067,14 @@ const QuizUI = (() => {
   function renderAchievements(containerId) {
     const saved = JSON.parse(localStorage.getItem('antonimus-achievements') || '[]');
     const all = [
-      { id: 'first_steps', name: 'First Steps', desc: 'Answer 5 questions correctly', icon: '&#9733;' },
-      { id: 'knowledge_seeker', name: 'Knowledge Seeker', desc: 'Answer 25 questions correctly', icon: '&#9733;&#9733;' },
-      { id: 'scholar', name: 'Scholar', desc: 'Answer 100 questions correctly', icon: '&#9733;&#9733;&#9733;' },
-      { id: 'explorer', name: 'Explorer', desc: 'Study 5 chapters', icon: '&#128214;' },
-      { id: 'dedicated', name: 'Dedicated', desc: 'Study 10 chapters', icon: '&#128214;&#128214;' },
-      { id: 'completionist', name: 'Completionist', desc: 'Study all chapters', icon: '&#127891;' },
-      { id: 'challenger', name: 'Challenger', desc: 'Complete first challenge', icon: '&#9878;' },
-      { id: 'champion', name: 'Champion', desc: 'Complete 5 challenges', icon: '&#127942;' }
+      { id: 'first_steps', name: 'First Steps', desc: 'Answer 5 questions correctly', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' },
+      { id: 'knowledge_seeker', name: 'Knowledge Seeker', desc: 'Answer 25 questions correctly', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' },
+      { id: 'scholar', name: 'Scholar', desc: 'Answer 100 questions correctly', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' },
+      { id: 'explorer', name: 'Explorer', desc: 'Study 5 chapters', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>' },
+      { id: 'dedicated', name: 'Dedicated', desc: 'Study 10 chapters', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>' },
+      { id: 'completionist', name: 'Completionist', desc: 'Study all chapters', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>' },
+      { id: 'challenger', name: 'Challenger', desc: 'Complete first challenge', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/><polyline points="14.5 6.5 17 4 21 4 21 8 18.5 10.5"/><line x1="5" y1="11" x2="11" y2="5"/></svg>' },
+      { id: 'champion', name: 'Champion', desc: 'Complete 5 challenges', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>' }
     ];
 
     const container = document.getElementById(containerId);
@@ -1086,7 +1086,7 @@ const QuizUI = (() => {
           <div class="achievement-icon">${a.icon}</div>
           <div class="achievement-name">${a.name}</div>
           <div class="achievement-desc">${a.desc}</div>
-          <div class="achievement-status">${unlocked ? '&#10004; Unlocked' : '&#128274; Locked'}</div>
+          <div class="achievement-status">${unlocked ? '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:3px;"><polyline points="20 6 9 17 4 12"/></svg> Unlocked' : '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:3px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Locked'}</div>
         </div>`;
       }).join('')}
     </div>`;
