@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/sitemap.xml

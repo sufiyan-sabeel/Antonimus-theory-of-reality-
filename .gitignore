@@ -10,4 +10,14 @@
 !docs/
 !docs/index.html
 !docs/README.md
+!docs/css/
+!docs/css/styles.css
+!docs/js/
+!docs/js/*.js
+!docs/icons/
+!docs/icons/*
+!docs/sw.js
+!docs/manifest.json
+!docs/sitemap.xml
+!docs/robots.txt
 !.gitignore

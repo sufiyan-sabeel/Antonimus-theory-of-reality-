@@ -1,441 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antonimus Theory of Reality</title>
-<style>
-  /* ================================================================ */
-  /* ANTONIMUS PHILOSOPHY BOOK THEME                                  */
-  /* Elegant vintage-inspired design with modern animations           */
-  /* ================================================================ */
-  
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
-  
-  @page { margin: 25mm 30mm 25mm 30mm; size: A5; }
-  
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  /* ---- Reading Progress Bar ---- */
-  #reading-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #8B0000, #CD853F, #8B4513);
-    z-index: 1000;
-    transition: width 0.3s ease;
-    box-shadow: 0 1px 4px rgba(139,0,0,0.3);
-  }
-  
-  body {
-    font-family: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
-    font-size: 12pt;
-    line-height: 1.8;
-    color: #2c1810;
-    background: #f5f0e8;
-    background-image: 
-      radial-gradient(ellipse at 10% 20%, rgba(255, 248, 230, 0.4) 0%, transparent 50%),
-      radial-gradient(ellipse at 90% 80%, rgba(230, 220, 200, 0.3) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c5a9' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 30px 40px;
-    text-align: justify;
-    hyphens: auto;
-    min-height: 100vh;
-    box-shadow: 0 0 60px rgba(0,0,0,0.08);
-    position: relative;
-  }
-  
-  /* ---- Decorative page border ---- */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border: 12px solid transparent;
-    border-image: linear-gradient(135deg, #8B4513 0%, #CD853F 25%, #D2B48C 50%, #CD853F 75%, #8B4513 100%) 12;
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.3;
-  }
-  
-  /* ---- Smooth Scroll ---- */
-  html { scroll-behavior: smooth; }
-  
-  .tag {
-    display: inline-block;
-    padding: 2px 10px;
-    font-size: 8pt;
-    font-weight: 600;
-    margin-right: 4px;
-    border-radius: 12px;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  .tag-science { background: rgba(26, 82, 118, 0.1); color: #1a5276; }
-  .tag-philosophy { background: rgba(108, 52, 131, 0.1); color: #6c3483; }
-  .tag-islam { background: rgba(26, 122, 46, 0.1); color: #1a7a2e; }
-  .tag-antonimus { background: rgba(139, 69, 19, 0.1); color: #8B4513; }
-  
-  /* ---- Title Page ---- */
-  .title-page {
-    page-break-after: always;
-    text-align: center;
-    padding: 100px 30px 60px;
-    margin-bottom: 60px;
-    position: relative;
-    animation: fadeInBook 1.5s ease-out;
-  }
-  
-  .title-page::before {
-    content: '\2766';
-    font-size: 36pt;
-    color: #8B4513;
-    display: block;
-    margin-bottom: 20px;
-    opacity: 0.5;
-    animation: ornamentPulse 3s ease-in-out infinite;
-  }
-  
-  .title-page::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 15%;
-    right: 15%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #8B4513, #CD853F, #8B4513, transparent);
-  }
-  
-  @keyframes ornamentPulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.05); }
-  }
-  
-  @keyframes fadeInBook {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  .title-page h1 {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-size: 30pt;
-    font-weight: 700;
-    color: #3e1f0d;
-    border: none;
-    margin-bottom: 12px;
-    line-height: 1.2;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
-  }
-  
-  .title-page .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15pt;
-    color: #5c3a1e;
-    font-style: italic;
-    margin-bottom: 35px;
-    line-height: 1.5;
-    padding: 0 20px;
-  }
-  
-  .title-page .author {
-    font-size: 12pt;
-    color: #3e1f0d;
-    margin-top: 25px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-family: 'Playfair Display', serif;
-  }
-  
-  .title-page .meta {
-    font-size: 10pt;
-    color: #8B7355;
-    margin-top: 45px;
-    line-height: 2;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  
-  /* ---- Headings ---- */
-  h1 {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-size: 22pt;
-    font-weight: 600;
-    color: #3e1f0d;
-    border-bottom: 2px solid #CD853F;
-    padding-bottom: 10px;
-    margin-top: 35px;
-    margin-bottom: 18px;
-    page-break-before: always;
-    letter-spacing: 1px;
-    position: relative;
-  }
-  h1::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: #8B4513;
-  }
-  
-  h2 {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-size: 16pt;
-    font-weight: 600;
-    color: #4a2c14;
-    margin-top: 28px;
-    margin-bottom: 12px;
-    padding-left: 14px;
-    border-left: 4px solid #CD853F;
-    position: relative;
-    scroll-margin-top: 10px;
-  }
-  
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14pt;
-    font-weight: 600;
-    color: #5c3a1e;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    font-style: italic;
-    scroll-margin-top: 10px;
-  }
-  
-  h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 12pt;
-    font-weight: 600;
-    color: #3e1f0d;
-    margin-top: 16px;
-    margin-bottom: 8px;
-  }
-  
-  /* First heading after title page should not have page-break */
-  .first-section { page-break-before: avoid; }
-  
-  /* Paragraphs */
-  p { margin: 0.6em 0; text-indent: 0; }
-  
-  /* ---- Tables with reveal animation ---- */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 18px 0;
-    font-size: 10.5pt;
-    page-break-inside: avoid;
-  }
-  th {
-    background: linear-gradient(135deg, #3e1f0d, #5c3a1e);
-    color: #f5f0e8;
-    padding: 8px 10px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 10pt;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 1px;
-  }
-  td {
-    padding: 6px 10px;
-    border-bottom: 1px solid #d4c5a9;
-  }
-  tr:nth-child(even) td { background: rgba(205, 133, 63, 0.05); }
-  tr:hover td { background: rgba(205, 133, 63, 0.1); transition: background 0.3s ease; }
-  
-  /* ---- Blockquotes ---- */
-  blockquote {
-    border-left: 3px solid #CD853F;
-    background: rgba(205, 133, 63, 0.06);
-    padding: 12px 20px;
-    margin: 15px 0;
-    font-style: italic;
-    color: #4a2c14;
-    border-radius: 0 4px 4px 0;
-  }
-  
-  /* ---- Callout Boxes ---- */
-  .callout {
-    padding: 14px 18px;
-    margin: 15px 0;
-    border-left: 5px solid #8B7355;
-    background: rgba(245, 240, 232, 0.8);
-    font-size: 10.5pt;
-    page-break-inside: avoid;
-    border-radius: 0 6px 6px 0;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .callout-science { border-color: #1a5276; background: rgba(26, 82, 118, 0.06); }
-  .callout-science strong { color: #1a5276; }
-  .callout-philosophy { border-color: #6c3483; background: rgba(108, 52, 131, 0.06); }
-  .callout-philosophy strong { color: #6c3483; }
-  .callout-islam { border-color: #1a7a2e; background: rgba(26, 122, 46, 0.06); }
-  .callout-islam strong { color: #1a7a2e; }
-  .callout-antonimus { border-color: #8B4513; background: rgba(139, 69, 19, 0.06); }
-  .callout-antonimus strong { color: #8B4513; }
-  .callout-warning { border-color: #922b21; background: rgba(146, 43, 33, 0.06); }
-  .callout-warning strong { color: #922b21; }
-  .callout-note { border-color: #1a6c5c; background: rgba(26, 108, 92, 0.06); }
-  .callout-note strong { color: #1a6c5c; }
-  .callout-example { border-color: #5d6d7e; background: rgba(93, 109, 126, 0.06); }
-  .callout-example strong { color: #5d6d7e; }
-  
-  /* ---- Law Boxes ---- */
-  .law-box {
-    border: 1px solid #DEC29B;
-    background: rgba(255, 248, 230, 0.6);
-    padding: 14px 18px;
-    margin: 12px 0;
-    border-radius: 6px;
-    page-break-inside: avoid;
-  }
-  .law-box h4 { color: #8B4513; margin-top: 0; font-family: 'Playfair Display', serif; }
-  
-  /* ---- Equation Boxes ---- */
-  .equation-box {
-    background: rgba(250, 245, 238, 0.9);
-    border: 1px solid #DEC29B;
-    padding: 15px;
-    text-align: center;
-    margin: 15px 0;
-    page-break-inside: avoid;
-    border-radius: 6px;
-    box-shadow: 0 2px 12px rgba(139,69,19,0.06);
-  }
-  
-  /* ---- Code Blocks ---- */
-  pre {
-    background: rgba(245, 240, 232, 0.7);
-    border: 1px solid #d4c5a9;
-    padding: 10px 14px;
-    font-size: 9.5pt;
-    font-family: 'Courier New', monospace;
-    overflow-x: auto;
-    border-radius: 4px;
-    color: #3e1f0d;
-  }
-  
-  /* ---- Image Captions ---- */
-  .img-caption { text-align: center; font-style: italic; color: #8B7355; font-size: 9.5pt; margin-top: -10px; margin-bottom: 15px; }
-  img {
-    max-width: 100%;
-    margin: 18px 0;
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  }
-  
+<title>Antonimus Theory of Reality — Online Book</title>
+<meta name="description" content="A Philosophical Framework Connecting Reality, Imagination, Knowledge, Observation, and Human Creation. By Umaiz Sufiyan.">
+<meta name="author" content="Umaiz Sufiyan">
+<meta name="theme-color" content="#f5f0e8">
 
-  
-  /* ---- TOC ---- */
-  .toc {
-    margin: 25px 0;
-    page-break-after: always;
-    opacity: 0;
-    animation: fadeInBook 1s ease-out 0.5s forwards;
+<!-- Open Graph -->
+<meta property="og:title" content="Antonimus Theory of Reality">
+<meta property="og:description" content="A Philosophical Framework Connecting Reality, Imagination, Knowledge, Observation, and Human Creation">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/">
+<meta property="og:image" content="https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/icons/icon-512.svg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Antonimus Theory of Reality">
+<meta name="twitter:description" content="A Philosophical Framework Connecting Reality, Imagination, Knowledge, Observation, and Human Creation">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Antonimus Theory of Reality",
+  "author": {
+    "@type": "Person",
+    "name": "Umaiz Sufiyan"
+  },
+  "description": "A Philosophical Framework Connecting Reality, Imagination, Knowledge, Observation, and Human Creation",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "inLanguage": "en",
+  "bookFormat": "https://schema.org/EBook",
+  "url": "https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/"
+}
+</script>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.svg" sizes="192x192">
+<link rel="apple-touch-icon" href="icons/icon-192.svg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://sufiyan-sabeel.github.io/Antonimus-theory-of-reality-/">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    tags: 'ams'
+  },
+  options: {
+    skipHtmlTypes: 'script'
   }
-  .toc h3 {
-    text-align: center;
-    font-size: 16pt;
-    font-family: 'Playfair Display', serif;
-    border-bottom: 2px solid #CD853F;
-    padding-bottom: 12px;
-    color: #3e1f0d;
-  }
-  .toc ul { list-style: none; padding: 0; }
-  .toc li {
-    padding: 4px 0;
-    font-size: 10.5pt;
-    border-bottom: 1px dotted rgba(205, 133, 63, 0.2);
-  }
-  .toc li:last-child { border-bottom: none; }
-  .toc a {
-    color: #5c3a1e;
-    text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
-    display: inline-block;
-  }
-  .toc a:hover { color: #8B4513; padding-left: 6px; }
-  
-  /* ---- Horizontal Rules / Ornamental Dividers ---- */
-  hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #CD853F, transparent);
-    margin: 30px 0;
-  }
-  
-  /* ---- Footer ---- */
-  .doc-footer {
-    text-align: center;
-    color: #8B7355;
-    font-size: 9.5pt;
-    border-top: 1px solid #d4c5a9;
-    padding-top: 15px;
-    margin-top: 35px;
-    font-style: italic;
-  }
-  
-  /* ---- Lists ---- */
-  ul, ol { margin: 10px 0; padding-left: 28px; }
-  li { margin: 4px 0; }
-  
-  /* ---- Abstract ---- */
-  .abstract-box {
-    background: rgba(205, 133, 63, 0.06);
-    border: 1px solid #DEC29B;
-    padding: 18px 22px;
-    margin: 18px 0;
-    border-radius: 6px;
-    font-style: italic;
-  }
-  
-  /* ---- Dividers ---- */
-  .chapter-divider { margin: 35px 0; position: relative; }
-  .section-divider { margin: 18px 0; }
-  
-  /* ---- Print ---- */
-  @media print {
-    body {
-      font-size: 10pt;
-      max-width: none;
-      padding: 0;
-      background: white;
-      box-shadow: none;
-    }
-    body::before { display: none; }
-    .title-page { padding-top: 80px; }
-    h1 { page-break-before: always; }
-    h2 { page-break-before: always; }
-    h1:first-of-type { page-break-before: avoid; }
-  }
-  
-  /* ---- Responsive ---- */
-  @media (max-width: 600px) {
-    body { padding: 15px 12px; font-size: 11pt; }
-    body::before { border-width: 6px; }
-    .title-page h1 { font-size: 22pt; }
-    .title-page .subtitle { font-size: 13pt; }
-  }
-</style>
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
 </head>
 <body>
-<div id="reading-progress"></div>
 
-<div class="title-page">
-<h1>Antonimus Theory of Reality</h1>
-<div class="subtitle">A Philosophical Framework Connecting Reality, Imagination, Knowledge, Observation, and Human Creation</div>
-<div class="author">Author: <strong>Umaiz Sufiyan</strong></div>
-<div class="meta">
-Classification: Philosophical Research Paper<br>
-Version: 2.0 — Expanded Research Edition<br>
-First published: July 2026
+<!-- ============================================================ -->
+<!-- SIDEBAR NAVIGATION                                           -->
+<!-- ============================================================ -->
+<aside id="sidebar" class="sidebar" role="navigation" aria-label="Table of Contents">
+  <div class="sidebar-header">
+    <h2>Antonimus Theory</h2>
+    <div class="sidebar-sub">Table of Contents</div>
+    <button class="sidebar-close" aria-label="Close sidebar">&times;</button>
+  </div>
+  <nav id="sidebar-nav" class="sidebar-nav" aria-label="Chapter navigation"></nav>
+</aside>
+
+<!-- ============================================================ -->
+<!-- TOP HEADER                                                   -->
+<!-- ============================================================ -->
+<header class="top-header" role="banner">
+  <div class="header-left">
+    <button class="menu-btn" aria-label="Toggle navigation menu" title="Toggle sidebar (Ctrl+B)">&#9776;</button>
+    <span class="site-title">Antonimus Theory of Reality</span>
+  </div>
+
+  <div class="header-center">
+    <div class="header-search">
+      <span class="search-icon">&#128269;</span>
+      <input type="search" id="search-input" placeholder="Search the book... (Ctrl+K or /)" aria-label="Search the book">
+    </div>
+  </div>
+
+  <div class="header-right">
+    <button class="header-btn" data-action="bookmark" title="Bookmark current page (B)" aria-label="Bookmark page">&#9733;</button>
+    <button class="header-btn" data-action="focus" title="Toggle focus mode (F)" aria-label="Toggle focus mode">&#9681;</button>
+    <button class="header-btn" data-action="fullscreen" title="Toggle fullscreen" aria-label="Toggle fullscreen">&#9974;</button>
+    <button class="header-btn" data-action="theme-toggle" title="Change theme" aria-label="Change theme">&#9681;</button>
+    <button class="header-btn" data-action="search" title="Search (Ctrl+K)" aria-label="Search">&#128269;</button>
+    <div class="font-controls">
+      <button data-action="font-decrease" title="Decrease font size" aria-label="Decrease font size">A-</button>
+      <button data-action="font-increase" title="Increase font size" aria-label="Increase font size">A+</button>
+    </div>
+
+    <!-- Theme Dropdown -->
+    <div id="theme-dropdown" class="theme-dropdown">
+      <button class="theme-btn" data-theme="light"><span class="theme-icon">&#9728;</span> Light</button>
+      <button class="theme-btn" data-theme="dark"><span class="theme-icon">&#9790;</span> Dark</button>
+      <button class="theme-btn" data-theme="amoled"><span class="theme-icon">&#9679;</span> AMOLED</button>
+      <button class="theme-btn" data-theme="highcontrast"><span class="theme-icon">&#9776;</span> High Contrast</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- READING PROGRESS BAR                                         -->
+<!-- ============================================================ -->
+<div id="reading-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- ============================================================ -->
+<!-- SEARCH OVERLAY                                               -->
+<!-- ============================================================ -->
+<div id="search-overlay" class="search-overlay"></div>
+<div id="search-results" class="search-results" role="listbox" aria-label="Search results"></div>
+
+<!-- ============================================================ -->
+<!-- BOOKMARK INDICATOR                                           -->
+<!-- ============================================================ -->
+<div id="bookmark-indicator" class="bookmark-indicator">
+  <button onclick="App.toggleBookmark()">
+    &#9733; Bookmarked: <span class="bookmark-title"></span>
+  </button>
 </div>
-</div>
+
+<!-- ============================================================ -->
+<!-- MAIN CONTENT                                                 -->
+<!-- ============================================================ -->
+<main class="main-content" role="main">
+  <div class="book-content">
+
+    <!-- Reading time -->
+    <div id="reading-time" class="reading-time"></div>
+
+    <!-- Body content from pandoc-generated HTML -->
+    <BODY_CONTENT />
 
 <h1 id="antonimus-theory-of-reality">Antonimus Theory of Reality</h1>
 <h3 style="text-align:center; color:#555; font-weight:normal; margin-top:-10px; margin-bottom:25px;">
@@ -455,7 +166,173 @@ Science, Artificial Intelligence, Neuroscience, Engineering, Physics,
 Islamic Thought<br />
 <strong>Status:</strong> Original philosophical framework — not
 established scientific fact<br />
-<strong>Version:</strong> 2.0 — Expanded Research Edition</p>
+<strong>Version:</strong> 3.0 — Online Book Edition</p>
+<hr />
+<!-- ============================================================ -->
+<!-- BOOK FRONTMATTER                                           -->
+<!-- ============================================================ -->
+<h2 id="book-information">Book Information</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Title</strong></td>
+<td>Antonimus Theory of Reality</td>
+</tr>
+<tr>
+<td><strong>Subtitle</strong></td>
+<td>A Philosophical Framework Connecting Reality, Imagination,
+Knowledge, Observation, and Human Creation</td>
+</tr>
+<tr>
+<td><strong>Author</strong></td>
+<td>Umaiz Sufiyan</td>
+</tr>
+<tr>
+<td><strong>License</strong></td>
+<td>Creative Commons Attribution 4.0 International (CC BY 4.0)</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>3.0 — Online Book Edition</td>
+</tr>
+<tr>
+<td><strong>Published</strong></td>
+<td>July 2026</td>
+</tr>
+<tr>
+<td><strong>Repository</strong></td>
+<td><a href="https://github.com/antonimus/theory-of-reality">GitHub</a>
+(planned)</td>
+</tr>
+<tr>
+<td><strong>Formats</strong></td>
+<td>Markdown, HTML, PDF</td>
+</tr>
+<tr>
+<td><strong>Audience</strong></td>
+<td>Philosophers, scientists, engineers, educators, students, general
+readers</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Living document — open for contributions</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note">
+<p><strong>How to Read This Book</strong></p>
+<p>This book is organized into three parts:</p>
+<ol>
+<li>
+<strong>Core Framework (Sections 1–7):</strong> Introduces the
+fundamental concepts — the Universal Antonimus Law, the conceptual
+equations, and the philosophical principles. Essential reading for all
+readers.
+</li>
+<li>
+<strong>Applications and Implications (Sections 8–14):</strong> Explores
+practical examples, the fifteen laws, mathematical models, AI
+comparison, dimensions, Islamic perspective, and criticism. May be read
+selectively based on interest.
+</li>
+<li>
+<strong>Appendices (A–J):</strong> Supplementary material including
+exercises, case studies, research methods, sources, a glossary,
+educational framework, future research roadmap, and the Principle of
+Fundamental Discovery. Reference material for deeper study.
+</li>
+</ol>
+<p>Each section is self-contained, allowing readers to jump to topics of
+interest. Equations marked with <span
+class="tag tag-antonimus">CONCEPTUAL MODEL</span> are original Antonimus
+ideas, not established scientific laws.</p>
+</div>
+<div class="callout callout-warning">
+<p><strong>License and Usage</strong></p>
+<p>This work is licensed under <strong>Creative Commons Attribution 4.0
+International (CC BY 4.0)</strong>. You are free to share, copy,
+distribute, and adapt the material for any purpose, even commercially,
+as long as you provide appropriate credit to the author (Umaiz Sufiyan)
+and indicate if changes were made.</p>
+<p><strong>Suggested citation:</strong> Sufiyan, U. (2026).
+<em>Antonimus Theory of Reality: A Philosophical Framework Connecting
+Reality, Imagination, Knowledge, Observation, and Human Creation</em>
+(Version 3.0). [Online book].</p>
+</div>
+<hr class="section-divider">
+<h3 id="version-history">Version History</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>July 2026</td>
+<td>Initial philosophical essay — introduced core concepts, Reality
+Transformation Cycle, 5 equations, 4 examples</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>July 2026</td>
+<td>Expanded Research Edition — added 15 Laws of Antonimus, 35 examples,
+Universal Equation, AI vs Human comparison, Dimensions, Islamic
+perspective, Criticism section</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>July 2026</td>
+<td>Online Book Edition — added book frontmatter, glossary, educational
+framework, future research roadmap, detailed equation sheets,
+contributor guide, book metadata</td>
+</tr>
+</tbody>
+</table>
+<hr class="section-divider">
+<h3 id="contributor-guide">Contributor Guide</h3>
+<p>This is a living open-source document. Contributions are welcome in
+the following areas:</p>
+<ul>
+<li><strong>New examples:</strong> Case studies from any domain
+illustrating the Antonimus cycle</li>
+<li><strong>Experimental evidence:</strong> Research findings that
+support or challenge the framework</li>
+<li><strong>Criticism and refinement:</strong> Logical analysis,
+identified weaknesses, proposed improvements</li>
+<li><strong>Educational materials:</strong> Lesson plans, teaching
+guides, student exercises</li>
+<li><strong>Translations:</strong> Versions in other languages</li>
+</ul>
+<p>To contribute: 1. Fork the repository (once published) 2. Make your
+changes following the existing style and structure 3. Use the
+established callout box format for categorizing content 4. Ensure all
+equations include variable definitions and disclaimers 5. Submit a pull
+request with a clear description of your changes</p>
+<div class="callout callout-philosophy">
+<p><strong>Contribution Philosophy:</strong> Antonimus is a framework,
+not a dogma. Contributions that challenge, refine, or extend the
+framework are as valued as those that support it. The goal is collective
+understanding, not consensus.</p>
+</div>
 <hr />
 <h2 id="abstract">Abstract</h2>
 <p>This paper presents <strong>Antonimus</strong>, an original
@@ -545,6 +422,37 @@ Table of Contents
 </li>
 <li>
 <a href="#s15">15. Conclusion</a>
+</li>
+<li>
+<a href="#exercises">Appendix A — Mathematical Exercises</a>
+</li>
+<li>
+<a href="#appendix-b">Appendix B — Case Study Timelines</a>
+</li>
+<li>
+<a href="#appendix-c">Appendix C — Research Methods &amp; Projects</a>
+</li>
+<li>
+<a href="#appendix-d">Appendix D — Annotated Sources</a>
+</li>
+<li>
+<a href="#appendix-e">Appendix E — Publishing Guide</a>
+</li>
+<li>
+<a href="#appendix-f">Appendix F — Educational Framework</a>
+</li>
+<li>
+<a href="#appendix-g">Appendix G — Equation Reference Sheets</a>
+</li>
+<li>
+<a href="#appendix-h">Appendix H — Glossary of Terms</a>
+</li>
+<li>
+<a href="#appendix-i">Appendix I — Future Research Roadmap</a>
+</li>
+<li>
+<a href="#appendix-j">Appendix J — Principle of Fundamental
+Discovery</a>
 </li>
 <li>
 <a href="#references">References</a>
@@ -792,8 +700,9 @@ relationship described in the Universal Law:</p>
 <h3>
 Antonimus Universal Equation
 </h3>
-<p><span
-class="math display"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em>O</em>, <em>A</em>, <em>T</em>)</span></p>
+<p><span class="math display">\[
+R = f(I, K, O, A, T)
+\]</span></p>
 </div>
 <p><strong>Where:</strong></p>
 <table>
@@ -811,37 +720,37 @@ class="math display"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>R</em></span></td>
+<td><span class="math inline">\(R\)</span></td>
 <td>Reality (Outcome)</td>
 <td>The human-created outcome that results from the process</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Imagination</td>
 <td>The faculty of generating novel mental possibilities</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge</td>
 <td>Structured understanding of principles, facts, and methods</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>O</em></span></td>
+<td><span class="math inline">\(O\)</span></td>
 <td>Observation</td>
 <td>Empirical verification and feedback</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span></td>
+<td><span class="math inline">\(A\)</span></td>
 <td>Action</td>
 <td>Physical or instrumental implementation</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>T</em></span></td>
+<td><span class="math inline">\(T\)</span></td>
 <td>Time</td>
 <td>The temporal dimension in which the process unfolds</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>f</em></span></td>
+<td><span class="math inline">\(f\)</span></td>
 <td>Function</td>
 <td>The (not fully specified) mapping from inputs to outcome</td>
 </tr>
@@ -849,15 +758,15 @@ class="math display"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em
 </table>
 <h3 id="interpretation">3.2 Interpretation</h3>
 <p>The equation states that a human-created reality <span
-class="math inline"><em>R</em></span> is a function <span
-class="math inline"><em>f</em></span> of five interdependent variables:
+class="math inline">\(R\)</span> is a function <span
+class="math inline">\(f\)</span> of five interdependent variables:
 Imagination, Knowledge, Observation, Action, and Time. The function
-<span class="math inline"><em>f</em></span> is intentionally not fully
+<span class="math inline">\(f\)</span> is intentionally not fully
 specified — it represents the complex, context-dependent process by
 which these factors interact. In some cases, <span
-class="math inline"><em>f</em></span> may be approximately
-multiplicative (all factors must be present); in others, certain factors
-may dominate.</p>
+class="math inline">\(f\)</span> may be approximately multiplicative
+(all factors must be present); in others, certain factors may
+dominate.</p>
 <h3 id="worked-examples">3.3 Worked Examples</h3>
 <p><strong>Example 1: Powered Flight</strong></p>
 <table>
@@ -873,31 +782,31 @@ may dominate.</p>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>I</em></span> (Imagination)</td>
+<td><span class="math inline">\(I\)</span> (Imagination)</td>
 <td>Da Vinci’s ornithopter sketches; later, the Wright brothers’ vision
 of controlled flight</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span> (Knowledge)</td>
+<td><span class="math inline">\(K\)</span> (Knowledge)</td>
 <td>Aerodynamics research by George Cayley, Otto Lilienthal’s glider
 data</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>O</em></span> (Observation)</td>
+<td><span class="math inline">\(O\)</span> (Observation)</td>
 <td>Wind tunnel testing, observation of bird flight, glider
 experiments</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span> (Action)</td>
+<td><span class="math inline">\(A\)</span> (Action)</td>
 <td>Construction of the Wright Flyer, test flights at Kitty Hawk</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>T</em></span> (Time)</td>
+<td><span class="math inline">\(T\)</span> (Time)</td>
 <td>Centuries of dreaming + decades of systematic research + years of
 prototype refinement</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>R</em></span> (Outcome)</td>
+<td><span class="math inline">\(R\)</span> (Outcome)</td>
 <td>The first powered, controlled, sustained flight (1903)</td>
 </tr>
 </tbody>
@@ -916,31 +825,31 @@ prototype refinement</td>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Tim Berners-Lee’s vision of a decentralized information network</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge of hypertext, TCP/IP protocols, client-server
 architecture</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>O</em></span></td>
+<td><span class="math inline">\(O\)</span></td>
 <td>Observation of early internet usage, information-sharing needs at
 CERN</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span></td>
+<td><span class="math inline">\(A\)</span></td>
 <td>Writing the first web browser, server, and HTTP/HTML
 specifications</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>T</em></span></td>
+<td><span class="math inline">\(T\)</span></td>
 <td>Proposal in 1989; first website in 1991; global adoption over the
 following decade</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>R</em></span></td>
+<td><span class="math inline">\(R\)</span></td>
 <td>The World Wide Web as a global information system</td>
 </tr>
 </tbody>
@@ -959,43 +868,42 @@ following decade</td>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Alexander Fleming’s hypothesis that mold inhibited bacterial
 growth</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge of bacteriology, mycology, and antiseptic techniques</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>O</em></span></td>
+<td><span class="math inline">\(O\)</span></td>
 <td>Observation of the inhibition zone around Penicillium mold
 (1928)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span></td>
+<td><span class="math inline">\(A\)</span></td>
 <td>Isolation, purification, mass production (Florey &amp; Chain)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>T</em></span></td>
+<td><span class="math inline">\(T\)</span></td>
 <td>Discovery in 1928; mass production by 1945</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>R</em></span></td>
+<td><span class="math inline">\(R\)</span></td>
 <td>The first widely available antibiotic, saving millions of lives</td>
 </tr>
 </tbody>
 </table>
 <div class="callout callout-warning">
 <p><strong>Important clarification:</strong> The equation <span
-class="math inline"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em>O</em>, <em>A</em>, <em>T</em>)</span>
-is a <strong>conceptual model</strong>, not a physical law. It does not
+class="math inline">\(R = f(I, K, O, A, T)\)</span> is a
+<strong>conceptual model</strong>, not a physical law. It does not
 permit precise numerical prediction. It is a tool for thinking about the
 components of human creation, analogous to how the equation <span
-class="math inline"><em>E</em> = <em>m</em><em>c</em><sup>2</sup></span>
-relates energy and mass — but unlike that equation, this one is not
-experimentally quantified. It is a philosophical formalism, not a
-scientific one.</p>
+class="math inline">\(E = mc^2\)</span> relates energy and mass — but
+unlike that equation, this one is not experimentally quantified. It is a
+philosophical formalism, not a scientific one.</p>
 </div>
 <hr class="chapter-divider">
 <h2 id="s4">
@@ -1012,9 +920,9 @@ factors. The Expanded Antonimus Equation incorporates uncertainty:</p>
 <h3>
 Expanded Antonimus Equation
 </h3>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R = \frac{(I \times K \times A) \times O}{U}
-$$</span></p>
+\]</span></p>
 </div>
 <p><strong>Where:</strong></p>
 <table>
@@ -1026,27 +934,27 @@ $$</span></p>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>R</em></span></td>
+<td><span class="math inline">\(R\)</span></td>
 <td>Reality (Outcome)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Imagination</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span></td>
+<td><span class="math inline">\(A\)</span></td>
 <td>Action</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>O</em></span></td>
+<td><span class="math inline">\(O\)</span></td>
 <td>Observation</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>U</em></span></td>
+<td><span class="math inline">\(U\)</span></td>
 <td>Uncertainty</td>
 </tr>
 </tbody>
@@ -1054,21 +962,20 @@ $$</span></p>
 <h3 id="the-role-of-uncertainty">4.2 The Role of Uncertainty</h3>
 <p>In this formulation:</p>
 <ul>
-<li><strong>Imagination (<span class="math inline"><em>I</em></span>),
-Knowledge (<span class="math inline"><em>K</em></span>), and Action
-(<span class="math inline"><em>A</em></span>)</strong> are treated as
-multiplicative factors. If any one of them is zero, the outcome is zero
-— an imagined but unactioned idea produces no reality; action without
-imagination is rote repetition without novelty.</li>
+<li><strong>Imagination (<span class="math inline">\(I\)</span>),
+Knowledge (<span class="math inline">\(K\)</span>), and Action (<span
+class="math inline">\(A\)</span>)</strong> are treated as multiplicative
+factors. If any one of them is zero, the outcome is zero — an imagined
+but unactioned idea produces no reality; action without imagination is
+rote repetition without novelty.</li>
 <li><strong>Observation (<span
-class="math inline"><em>O</em></span>)</strong> multiplies the product
-of <span
-class="math inline"><em>I</em> × <em>K</em> × <em>A</em></span>, because
+class="math inline">\(O\)</span>)</strong> multiplies the product of
+<span class="math inline">\(I \times K \times A\)</span>, because
 observation provides the feedback that validates and refines the
 process.</li>
 <li><strong>Uncertainty (<span
-class="math inline"><em>U</em></span>)</strong> divides the whole.
-Greater uncertainty reduces the probability or quality of a successful
+class="math inline">\(U\)</span>)</strong> divides the whole. Greater
+uncertainty reduces the probability or quality of a successful
 outcome.</li>
 </ul>
 <h3 id="how-uncertainty-is-reduced">4.3 How Uncertainty is Reduced</h3>
@@ -1093,7 +1000,7 @@ speculation.</p>
 <thead>
 <tr>
 <th>Scenario</th>
-<th><span class="math inline"><em>U</em></span> Level</th>
+<th><span class="math inline">\(U\)</span> Level</th>
 <th>Likely Outcome</th>
 </tr>
 </thead>
@@ -1124,23 +1031,22 @@ uncertainty</td>
 <h3 id="example-developing-a-new-medicine">4.5 Example: Developing a New
 Medicine</h3>
 <ul>
-<li><strong><span class="math inline"><em>I</em></span></strong>:
-Hypothesis that Compound X treats Disease Y</li>
-<li><strong><span class="math inline"><em>K</em></span></strong>:
-Biochemical knowledge of Disease Y, pharmacological properties of
-Compound X</li>
-<li><strong><span class="math inline"><em>A</em></span></strong>:
-Synthesis of Compound X, preparation of clinical trials</li>
-<li><strong><span class="math inline"><em>O</em></span></strong>:
-Laboratory testing, animal trials, Phase I-III clinical trials</li>
-<li><strong><span class="math inline"><em>U</em></span></strong>:
-Initially very high (unknown side effects, efficacy, dosage) →
-progressively reduced by each stage of observation</li>
+<li><strong><span class="math inline">\(I\)</span></strong>: Hypothesis
+that Compound X treats Disease Y</li>
+<li><strong><span class="math inline">\(K\)</span></strong>: Biochemical
+knowledge of Disease Y, pharmacological properties of Compound X</li>
+<li><strong><span class="math inline">\(A\)</span></strong>: Synthesis
+of Compound X, preparation of clinical trials</li>
+<li><strong><span class="math inline">\(O\)</span></strong>: Laboratory
+testing, animal trials, Phase I-III clinical trials</li>
+<li><strong><span class="math inline">\(U\)</span></strong>: Initially
+very high (unknown side effects, efficacy, dosage) → progressively
+reduced by each stage of observation</li>
 </ul>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R_{\text{approved drug}} = \frac{(I \times K \times A) \times
 O}{U_{\text{reduced by trials}}}
-$$</span></p>
+\]</span></p>
 <div class="callout callout-science">
 <p><strong>Scientific context:</strong> The relationship between
 observation and uncertainty reduction is well-established in statistics
@@ -1162,8 +1068,9 @@ moving object). The Prediction Equation models this capacity:</p>
 <h3>
 Prediction Equation
 </h3>
-<p><span
-class="math display"><em>P</em> = <em>I</em> + <em>E</em> + <em>K</em></span></p>
+<p><span class="math display">\[
+P = I + E + K
+\]</span></p>
 </div>
 <p><strong>Where:</strong></p>
 <table>
@@ -1175,19 +1082,19 @@ class="math display"><em>P</em> = <em>I</em> + <em>E</em> + <em>K</e
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>P</em></span></td>
+<td><span class="math inline">\(P\)</span></td>
 <td>Prediction (simulated future outcome)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Imagination</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>E</em></span></td>
+<td><span class="math inline">\(E\)</span></td>
 <td>Experience (prior outcomes stored in memory)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge (generalized principles and models)</td>
 </tr>
 </tbody>
@@ -1221,19 +1128,19 @@ Prediction</h3>
 <tbody>
 <tr>
 <td><strong>Source of <span
-class="math inline"><em>I</em></span></strong></td>
+class="math inline">\(I\)</span></strong></td>
 <td>Generative mental simulation</td>
 <td>Pattern interpolation from training data</td>
 </tr>
 <tr>
 <td><strong>Source of <span
-class="math inline"><em>E</em></span></strong></td>
+class="math inline">\(E\)</span></strong></td>
 <td>Direct lived experience</td>
 <td>Training dataset (curated by humans)</td>
 </tr>
 <tr>
 <td><strong>Source of <span
-class="math inline"><em>K</em></span></strong></td>
+class="math inline">\(K\)</span></strong></td>
 <td>Conceptual understanding, causal models</td>
 <td>Statistical correlations, learned weights</td>
 </tr>
@@ -1265,16 +1172,15 @@ grounding of human prediction.</p>
 </div>
 <h3 id="example-predicting-weather">5.4 Example: Predicting Weather</h3>
 <ul>
-<li><strong><span class="math inline"><em>I</em></span></strong>: A
+<li><strong><span class="math inline">\(I\)</span></strong>: A
 meteorologist imagines how current atmospheric conditions might
 evolve</li>
-<li><strong><span class="math inline"><em>E</em></span></strong>: Years
-of experience observing weather patterns in the same region</li>
-<li><strong><span class="math inline"><em>K</em></span></strong>:
-Knowledge of atmospheric physics, climate models, statistical
-methods</li>
-<li><strong><span class="math inline"><em>P</em></span></strong>: A
-weather forecast with quantified confidence intervals</li>
+<li><strong><span class="math inline">\(E\)</span></strong>: Years of
+experience observing weather patterns in the same region</li>
+<li><strong><span class="math inline">\(K\)</span></strong>: Knowledge
+of atmospheric physics, climate models, statistical methods</li>
+<li><strong><span class="math inline">\(P\)</span></strong>: A weather
+forecast with quantified confidence intervals</li>
 </ul>
 <p>A purely AI-driven weather model might produce more accurate
 short-term predictions by processing vast data, but would lack the
@@ -1290,12 +1196,18 @@ not represented in training data.</p>
 <p>The Small Cause Law formalizes a recurring pattern in nature and
 human civilization: small initial conditions can produce
 disproportionately large outcomes.</p>
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Small causes, great outcomes: the growth of civilization from humble beginnings">
+<div class="img-caption">
+From a single seed to a forest; from one idea to a civilization — small
+causes propagate into great outcomes through chains of consequence.
+</div>
 <div class="equation-box">
 <h3>
 Small Cause Law
 </h3>
-<p><span
-class="math display"><em>G</em> = <em>s</em> × <em>C</em></span></p>
+<p><span class="math display">\[
+G = s \times C
+\]</span></p>
 </div>
 <p><strong>Where:</strong></p>
 <table>
@@ -1311,15 +1223,15 @@ class="math display"><em>G</em> = <em>s</em> × <em>C</em></span></p>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>G</em></span></td>
+<td><span class="math inline">\(G\)</span></td>
 <td>Great Outcome (large-scale result)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em></span></td>
+<td><span class="math inline">\(s\)</span></td>
 <td>Small Cause (initial condition, idea, or action)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>C</em></span></td>
+<td><span class="math inline">\(C\)</span></td>
 <td>Chain of Consequences (amplification through iteration, feedback, or
 propagation)</td>
 </tr>
@@ -1352,9 +1264,9 @@ nucleotides encode all of life’s genetic information. Two binary digits
 </colgroup>
 <thead>
 <tr>
-<th>Small Cause (<span class="math inline"><em>s</em></span>)</th>
-<th>Chain (<span class="math inline"><em>C</em></span>)</th>
-<th>Great Outcome (<span class="math inline"><em>G</em></span>)</th>
+<th>Small Cause (<span class="math inline">\(s\)</span>)</th>
+<th>Chain (<span class="math inline">\(C\)</span>)</th>
+<th>Great Outcome (<span class="math inline">\(G\)</span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -1369,8 +1281,7 @@ nucleotides encode all of life’s genetic information. Two binary digits
 <td>Modern computing</td>
 </tr>
 <tr>
-<td><span
-class="math inline"><em>E</em> = <em>m</em><em>c</em><sup>2</sup></span></td>
+<td><span class="math inline">\(E = mc^2\)</span></td>
 <td>Theoretical physics, nuclear experiments</td>
 <td>Nuclear energy</td>
 </tr>
@@ -1416,7 +1327,7 @@ class="math inline"><em>E</em> = <em>m</em><em>c</em><sup>2</sup></span></td
 claim that every small idea produces great outcomes. Rather, it observes
 that when great outcomes occur, they often trace back to surprisingly
 small beginnings. The chain of consequences <span
-class="math inline"><em>C</em></span> is the critical factor — it is the
+class="math inline">\(C\)</span> is the critical factor — it is the
 amplification mechanism that transforms the small into the great.
 Understanding which chains amplify and which dissipate is a key question
 for future research.</p>
@@ -1427,6 +1338,12 @@ for future research.</p>
 <li>Human Creation Equation
 </h2></li>
 </ol>
+<img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=800&q=80" alt="The creative process: from imagination to realized creation">
+<div class="img-caption">
+Human creation follows a temporal sequence: imagination conceives,
+knowledge guides, experimentation refines, action executes, and reality
+receives the result.
+</div>
 <h3 id="the-sequential-model">7.1 The Sequential Model</h3>
 <p>While the Universal Equation represents the interdependent factors of
 creation, the Human Creation Equation models the typical temporal
@@ -1435,8 +1352,9 @@ sequence:</p>
 <h3>
 Human Creation Equation
 </h3>
-<p><span
-class="math display"><em>I</em> → <em>K</em> → <em>E</em> → <em>A</em> → <em>R</em></span></p>
+<p><span class="math display">\[
+I \rightarrow K \rightarrow E \rightarrow A \rightarrow R
+\]</span></p>
 </div>
 <p><strong>Where:</strong></p>
 <table>
@@ -1454,27 +1372,27 @@ class="math display"><em>I</em> → <em>K</em> → <em>E</em> → <e
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Imagination</td>
 <td>A possibility is mentally conceived</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge</td>
 <td>Relevant information and understanding are acquired</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>E</em></span></td>
+<td><span class="math inline">\(E\)</span></td>
 <td>Experiment</td>
 <td>The idea is tested, prototyped, or modeled</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span></td>
+<td><span class="math inline">\(A\)</span></td>
 <td>Action</td>
 <td>Deliberate effort is applied to build or implement</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>R</em></span></td>
+<td><span class="math inline">\(R\)</span></td>
 <td>Reality</td>
 <td>The idea materializes as a tangible outcome</td>
 </tr>
@@ -1485,17 +1403,14 @@ Linear</h3>
 <p>While represented as a linear sequence, the actual process is
 iterative and recursive:</p>
 <ul>
-<li>Feedback from <span class="math inline"><em>R</em></span> (reality)
-informs new <span class="math inline"><em>I</em></span>
-(imagination)</li>
-<li>Failed experiments (<span class="math inline"><em>E</em></span>)
-generate new knowledge (<span
-class="math inline"><em>K</em></span>)</li>
-<li>New knowledge (<span class="math inline"><em>K</em></span>) expands
-the scope of imagination (<span
-class="math inline"><em>I</em></span>)</li>
-<li>Each <span class="math inline"><em>R</em></span> becomes the
-starting point for the next cycle</li>
+<li>Feedback from <span class="math inline">\(R\)</span> (reality)
+informs new <span class="math inline">\(I\)</span> (imagination)</li>
+<li>Failed experiments (<span class="math inline">\(E\)</span>) generate
+new knowledge (<span class="math inline">\(K\)</span>)</li>
+<li>New knowledge (<span class="math inline">\(K\)</span>) expands the
+scope of imagination (<span class="math inline">\(I\)</span>)</li>
+<li>Each <span class="math inline">\(R\)</span> becomes the starting
+point for the next cycle</li>
 </ul>
 <pre class="mermaid"><code>graph TD
     I[Imagination] --&gt; K[Knowledge]
@@ -1519,11 +1434,11 @@ Cycle</h3>
 <thead>
 <tr>
 <th>Creation</th>
-<th><span class="math inline"><em>I</em></span> (Imagination)</th>
-<th><span class="math inline"><em>K</em></span> (Knowledge)</th>
-<th><span class="math inline"><em>E</em></span> (Experiment)</th>
-<th><span class="math inline"><em>A</em></span> (Action)</th>
-<th><span class="math inline"><em>R</em></span> (Reality)</th>
+<th><span class="math inline">\(I\)</span> (Imagination)</th>
+<th><span class="math inline">\(K\)</span> (Knowledge)</th>
+<th><span class="math inline">\(E\)</span> (Experiment)</th>
+<th><span class="math inline">\(A\)</span> (Action)</th>
+<th><span class="math inline">\(R\)</span> (Reality)</th>
 </tr>
 </thead>
 <tbody>
@@ -1602,6 +1517,12 @@ Cycle</h3>
 <p>The following examples illustrate the Antonimus framework across
 domains — from nature to technology, from art to science. Each example
 traces the path from observation or imagination to realized outcome.</p>
+<img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=800&q=80" alt="Engineering innovation: transforming imagination into practical reality">
+<div class="img-caption">
+Every practical innovation follows the Antonimus cycle: observation
+sparks imagination, knowledge guides development, and action produces
+the realized outcome.
+</div>
 <h3 id="nature-inspired-creations">8.1 Nature-Inspired Creations</h3>
 <table>
 <colgroup>
@@ -2254,8 +2175,9 @@ Equation: Reality Formation</h3>
 <h4>
 Reality Formation
 </h4>
-<p><span
-class="math display"><em>R</em> = <em>I</em> × <em>K</em> × <em>A</em></span></p>
+<p><span class="math display">\[
+R = I \times K \times A
+\]</span></p>
 </div>
 <table>
 <thead>
@@ -2267,22 +2189,22 @@ class="math display"><em>R</em> = <em>I</em> × <em>K</em> × <em>A<
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>R</em></span></td>
+<td><span class="math inline">\(R\)</span></td>
 <td>Human-created reality (outcome)</td>
 <td>Degree of actualization</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Imagination</td>
 <td>Scope of possibility space explored</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge</td>
 <td>Depth of relevant understanding</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>A</em></span></td>
+<td><span class="math inline">\(A\)</span></td>
 <td>Action</td>
 <td>Quantity and quality of applied effort</td>
 </tr>
@@ -2292,26 +2214,26 @@ class="math display"><em>R</em> = <em>I</em> × <em>K</em> × <em>A<
 is zero. Imagination without knowledge is fantasy; knowledge without
 action is inert; action without imagination is repetitive.</p>
 <p><strong>Worked Example (Conceptual):</strong> A bridge project: -
-<span class="math inline"><em>I</em> = high</span> (innovative
-suspension design conceived) - <span
-class="math inline"><em>K</em> = high</span> (structural engineering
-mastered) - <span class="math inline"><em>A</em> = high</span>
-(construction completed) - <span
-class="math inline"><em>R</em> = high × high × high = successful
-bridge</span></p>
-<p>If <span class="math inline"><em>A</em> = 0</span> (no construction),
-<span class="math inline"><em>R</em> = high × high × 0 = 0</span>
-(bridge not realized).</p>
+<span class="math inline">\(I = \text{high}\)</span> (innovative
+suspension design conceived) - <span class="math inline">\(K =
+\text{high}\)</span> (structural engineering mastered) - <span
+class="math inline">\(A = \text{high}\)</span> (construction completed)
+- <span class="math inline">\(R = \text{high} \times \text{high} \times
+\text{high} = \text{successful bridge}\)</span></p>
+<p>If <span class="math inline">\(A = 0\)</span> (no construction),
+<span class="math inline">\(R = \text{high} \times \text{high} \times 0
+= 0\)</span> (bridge not realized).</p>
 <h3 id="universal-equation-complete-form">10.2 Universal Equation
 (Complete Form)</h3>
 <div class="equation-box">
 <h4>
 Universal Equation
 </h4>
-<p><span
-class="math display"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em>O</em>, <em>A</em>, <em>T</em>)</span></p>
+<p><span class="math display">\[
+R = f(I, K, O, A, T)
+\]</span></p>
 </div>
-<p>Where <span class="math inline"><em>f</em></span> is an unspecified
+<p>Where <span class="math inline">\(f\)</span> is an unspecified
 function representing the complex interaction of all five variables. The
 function is not fully specifiable because the interaction depends on
 context: in some cases, observation dominates; in others, knowledge is
@@ -2322,9 +2244,9 @@ Uncertainty</h3>
 <h4>
 Expanded Equation
 </h4>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R = \frac{(I \times K \times A) \times O}{U}
-$$</span></p>
+\]</span></p>
 </div>
 <table>
 <thead>
@@ -2335,31 +2257,31 @@ $$</span></p>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>U</em></span></td>
+<td><span class="math inline">\(U\)</span></td>
 <td>Uncertainty (epistemic and aleatory)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Properties:</strong> - As <span
-class="math inline"><em>U</em> → 0</span>, <span
-class="math inline"><em>R</em> → ∞</span> (all uncertainty removed,
-outcome fully determined) — but <span
-class="math inline"><em>U</em></span> can never reach zero. - As <span
-class="math inline"><em>U</em> → ∞</span>, <span
-class="math inline"><em>R</em> → 0</span> (complete uncertainty prevents
-successful creation). - Observation <span
-class="math inline"><em>O</em></span> multiplies the product because it
+<p><strong>Properties:</strong> - As <span class="math inline">\(U
+\rightarrow 0\)</span>, <span class="math inline">\(R \rightarrow
+\infty\)</span> (all uncertainty removed, outcome fully determined) —
+but <span class="math inline">\(U\)</span> can never reach zero. - As
+<span class="math inline">\(U \rightarrow \infty\)</span>, <span
+class="math inline">\(R \rightarrow 0\)</span> (complete uncertainty
+prevents successful creation). - Observation <span
+class="math inline">\(O\)</span> multiplies the product because it
 provides validating feedback. - Knowledge <span
-class="math inline"><em>K</em></span> implicitly reduces <span
-class="math inline"><em>U</em></span> (knowledgeable actors face lower
+class="math inline">\(K\)</span> implicitly reduces <span
+class="math inline">\(U\)</span> (knowledgeable actors face lower
 uncertainty).</p>
 <h3 id="prediction-equation">10.4 Prediction Equation</h3>
 <div class="equation-box">
 <h4>
 Prediction
 </h4>
-<p><span
-class="math display"><em>P</em> = <em>I</em> + <em>E</em> + <em>K</em></span></p>
+<p><span class="math display">\[
+P = I + E + K
+\]</span></p>
 </div>
 <table>
 <thead>
@@ -2370,19 +2292,19 @@ class="math display"><em>P</em> = <em>I</em> + <em>E</em> + <em>K</e
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>P</em></span></td>
+<td><span class="math inline">\(P\)</span></td>
 <td>Predicted outcome</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline">\(I\)</span></td>
 <td>Imagination (generative simulation)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>E</em></span></td>
+<td><span class="math inline">\(E\)</span></td>
 <td>Experience (stored outcome patterns)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>K</em></span></td>
+<td><span class="math inline">\(K\)</span></td>
 <td>Knowledge (generalized principles)</td>
 </tr>
 </tbody>
@@ -2395,8 +2317,9 @@ vice versa.</p>
 <h4>
 Small Cause Law
 </h4>
-<p><span
-class="math display"><em>G</em> = <em>s</em> × <em>C</em></span></p>
+<p><span class="math display">\[
+G = s \times C
+\]</span></p>
 </div>
 <table>
 <thead>
@@ -2407,31 +2330,32 @@ class="math display"><em>G</em> = <em>s</em> × <em>C</em></span></p>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>G</em></span></td>
+<td><span class="math inline">\(G\)</span></td>
 <td>Great outcome (large-scale result)</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em></span></td>
+<td><span class="math inline">\(s\)</span></td>
 <td>Small initial cause</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>C</em></span></td>
+<td><span class="math inline">\(C\)</span></td>
 <td>Chain of consequences (amplification factor)</td>
 </tr>
 </tbody>
 </table>
-<p><span class="math inline"><em>C</em></span> is itself a function of
+<p><span class="math inline">\(C\)</span> is itself a function of
 context — including feedback loops, network effects, and threshold
-phenomena. <span class="math inline"><em>C</em> &gt; 1</span> indicates
-amplification; <span class="math inline"><em>C</em> &lt; 1</span>
-indicates dissipation.</p>
+phenomena. <span class="math inline">\(C &gt; 1\)</span> indicates
+amplification; <span class="math inline">\(C &lt; 1\)</span> indicates
+dissipation.</p>
 <h3 id="human-creation-cycle">10.6 Human Creation Cycle</h3>
 <div class="equation-box">
 <h4>
 Creation Cycle
 </h4>
-<p><span
-class="math display"><em>I</em> → <em>K</em> → <em>E</em> → <em>A</em> → <em>R</em></span></p>
+<p><span class="math display">\[
+I \rightarrow K \rightarrow E \rightarrow A \rightarrow R
+\]</span></p>
 </div>
 <p>This is a process equation rather than a quantitative relation. It
 describes the typical temporal sequence while acknowledging
@@ -2453,38 +2377,34 @@ Antonimus Equations</h3>
 </thead>
 <tbody>
 <tr>
-<td><span
-class="math inline"><em>R</em> = <em>I</em> × <em>K</em> × <em>A</em></span></td>
+<td><span class="math inline">\(R = I \times K \times A\)</span></td>
 <td>Reality Formation</td>
 <td>All three factors required for creation</td>
 </tr>
 <tr>
-<td><span
-class="math inline"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em>O</em>, <em>A</em>, <em>T</em>)</span></td>
+<td><span class="math inline">\(R = f(I, K, O, A, T)\)</span></td>
 <td>Universal Equation</td>
 <td>Five interdependent variables</td>
 </tr>
 <tr>
-<td><span class="math inline">$R = \frac{(I \times K \times A) \times
-O}{U}$</span></td>
+<td><span class="math inline">\(R = \frac{(I \times K \times A) \times
+O}{U}\)</span></td>
 <td>Expanded Equation</td>
 <td>Uncertainty reduces outcomes</td>
 </tr>
 <tr>
-<td><span
-class="math inline"><em>P</em> = <em>I</em> + <em>E</em> + <em>K</em></span></td>
+<td><span class="math inline">\(P = I + E + K\)</span></td>
 <td>Prediction</td>
 <td>Three resources for forecasting</td>
 </tr>
 <tr>
-<td><span
-class="math inline"><em>G</em> = <em>s</em> × <em>C</em></span></td>
+<td><span class="math inline">\(G = s \times C\)</span></td>
 <td>Small Cause Law</td>
 <td>Amplification through consequences</td>
 </tr>
 <tr>
-<td><span
-class="math inline"><em>I</em> → <em>K</em> → <em>E</em> → <em>A</em> → <em>R</em></span></td>
+<td><span class="math inline">\(I \rightarrow K \rightarrow E
+\rightarrow A \rightarrow R\)</span></td>
 <td>Creation Cycle</td>
 <td>Sequential transformation process</td>
 </tr>
@@ -2503,6 +2423,12 @@ intelligence is a subject of active research and debate. Antonimus
 offers a framework for comparison across multiple dimensions,
 recognizing that the two are qualitatively different in several
 important respects.</p>
+<img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" alt="Human and artificial intelligence: complementary or competing?">
+<div class="img-caption">
+Human intelligence operates through embodied experience, qualia, and
+causal reasoning; AI processes patterns at scale without subjective
+awareness. The Antonimus framework illuminates where each excels.
+</div>
 <h3 id="comparison-table">11.2 Comparison Table</h3>
 <table>
 <colgroup>
@@ -3082,10 +3008,10 @@ experiments</td>
 </tr>
 <tr>
 <td><strong>Under-specification of <span
-class="math inline"><em>f</em></span></strong></td>
+class="math inline">\(f\)</span></strong></td>
 <td>The Universal Equation’s function <span
-class="math inline"><em>f</em></span> is unspecified, which some critics
-may view as a theoretical gap</td>
+class="math inline">\(f\)</span> is unspecified, which some critics may
+view as a theoretical gap</td>
 </tr>
 <tr>
 <td><strong>Potential for misinterpretation</strong></td>
@@ -3329,8 +3255,9 @@ not mathematical proofs.</p>
 <h3 id="exercise-1-antonimus-universal-equation">Exercise 1 — Antonimus
 Universal Equation</h3>
 <div class="equation-box">
-<p><span
-class="math display"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em>O</em>, <em>A</em>, <em>T</em>)</span></p>
+<p><span class="math display">\[
+R = f(I, K, O, A, T)
+\]</span></p>
 </div>
 <p>Suppose a student has:</p>
 <ul>
@@ -3341,42 +3268,43 @@ class="math display"><em>R</em> = <em>f</em>(<em>I</em>, <em>K</em>, <em
 <li>Time = 2 years</li>
 </ul>
 <p><strong>Question:</strong> Will Reality (<span
-class="math inline"><em>R</em></span>) likely be strong or weak?</p>
+class="math inline">\(R\)</span>) likely be strong or weak?</p>
 <div class="callout callout-note">
 <p><strong>Answer:</strong> Since imagination, observation, and action
 are strong and knowledge grows over two years, Reality (<span
-class="math inline"><em>R</em></span>) is expected to be
+class="math inline">\(R\)</span>) is expected to be
 <strong>strong</strong>.</p>
 </div>
-<p><strong>Example:</strong> Idea <span class="math inline">→</span>
-Study <span class="math inline">→</span> Practice <span
-class="math inline">→</span> Product <span class="math inline">→</span>
-Successful project.</p>
+<p><strong>Example:</strong> Idea <span
+class="math inline">\(\rightarrow\)</span> Study <span
+class="math inline">\(\rightarrow\)</span> Practice <span
+class="math inline">\(\rightarrow\)</span> Product <span
+class="math inline">\(\rightarrow\)</span> Successful project.</p>
 <hr class="section-divider">
 <h3 id="exercise-2-expanded-antonimus-equation">Exercise 2 — Expanded
 Antonimus Equation</h3>
 <div class="equation-box">
-<p><span class="math display">$$
+<p><span class="math display">\[
 R = \frac{(I \times K \times A) \times O}{U}
-$$</span></p>
+\]</span></p>
 </div>
 <p>Suppose:</p>
 <ul>
-<li><span class="math inline"><em>I</em> = 8</span></li>
-<li><span class="math inline"><em>K</em> = 9</span></li>
-<li><span class="math inline"><em>A</em> = 7</span></li>
-<li><span class="math inline"><em>O</em> = 10</span></li>
-<li><span class="math inline"><em>U</em> = 2</span></li>
+<li><span class="math inline">\(I = 8\)</span></li>
+<li><span class="math inline">\(K = 9\)</span></li>
+<li><span class="math inline">\(A = 7\)</span></li>
+<li><span class="math inline">\(O = 10\)</span></li>
+<li><span class="math inline">\(U = 2\)</span></li>
 </ul>
 <p><strong>Question:</strong> Find <span
-class="math inline"><em>R</em></span>.</p>
+class="math inline">\(R\)</span>.</p>
 <p><strong>Solution:</strong></p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R = \frac{(8 \times 9 \times 7) \times 10}{2}
 = \frac{504 \times 10}{2}
 = \frac{5040}{2}
 = 2520
-$$</span></p>
+\]</span></p>
 <div class="callout callout-note">
 <p><strong>Interpretation:</strong> High imagination, knowledge,
 observation, and action combined with low uncertainty produce a strong
@@ -3387,37 +3315,40 @@ outcome.</p>
 Uncertainty</h3>
 <p>Use the same values as Exercise 2, but now:</p>
 <ul>
-<li><span class="math inline"><em>U</em> = 20</span></li>
+<li><span class="math inline">\(U = 20\)</span></li>
 </ul>
 <p><strong>Solution:</strong></p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R = \frac{5040}{20} = 252
-$$</span></p>
+\]</span></p>
 <div class="callout callout-note">
 <p><strong>Interpretation:</strong> Greater uncertainty (<span
-class="math inline"><em>U</em> = 20</span> versus <span
-class="math inline"><em>U</em> = 2</span>) reduces the successful
-outcome from 2520 to 252 — a tenfold decrease. This illustrates why
-reducing uncertainty through observation and knowledge is critical for
-successful creation.</p>
+class="math inline">\(U = 20\)</span> versus <span
+class="math inline">\(U = 2\)</span>) reduces the successful outcome
+from 2520 to 252 — a tenfold decrease. This illustrates why reducing
+uncertainty through observation and knowledge is critical for successful
+creation.</p>
 </div>
 <hr class="section-divider">
 <h3 id="exercise-4-human-prediction-equation">Exercise 4 — Human
 Prediction Equation</h3>
 <div class="equation-box">
-<p><span
-class="math display"><em>P</em> = <em>I</em> + <em>E</em> + <em>K</em></span></p>
+<p><span class="math display">\[
+P = I + E + K
+\]</span></p>
 </div>
 <p>Given:</p>
 <ul>
-<li><span class="math inline"><em>I</em> = 9</span></li>
-<li><span class="math inline"><em>E</em> = 8</span></li>
-<li><span class="math inline"><em>K</em> = 10</span></li>
+<li><span class="math inline">\(I = 9\)</span></li>
+<li><span class="math inline">\(E = 8\)</span></li>
+<li><span class="math inline">\(K = 10\)</span></li>
 </ul>
 <p><strong>Question:</strong> Find the Prediction value <span
-class="math inline"><em>P</em></span>.</p>
+class="math inline">\(P\)</span>.</p>
 <p><strong>Solution:</strong></p>
-<p><span class="math display"><em>P</em> = 9 + 8 + 10 = 27</span></p>
+<p><span class="math display">\[
+P = 9 + 8 + 10 = 27
+\]</span></p>
 <div class="callout callout-note">
 <p><strong>Interpretation:</strong> A person with strong imagination,
 experience, and knowledge is better equipped to anticipate possible
@@ -3428,18 +3359,21 @@ ability.</p>
 <h3 id="exercise-5-small-cause-principle">Exercise 5 — Small Cause
 Principle</h3>
 <div class="equation-box">
-<p><span
-class="math display"><em>G</em> = <em>s</em> × <em>C</em></span></p>
+<p><span class="math display">\[
+G = s \times C
+\]</span></p>
 </div>
 <p>Given:</p>
 <ul>
-<li>Small Cause <span class="math inline"> = 5</span></li>
-<li>Chain of Consequences <span class="math inline"> = 40</span></li>
+<li>Small Cause <span class="math inline">\(= 5\)</span></li>
+<li>Chain of Consequences <span class="math inline">\(= 40\)</span></li>
 </ul>
 <p><strong>Question:</strong> Find the Great Outcome <span
-class="math inline"><em>G</em></span>.</p>
+class="math inline">\(G\)</span>.</p>
 <p><strong>Solution:</strong></p>
-<p><span class="math display"><em>G</em> = 5 × 40 = 200</span></p>
+<p><span class="math display">\[
+G = 5 \times 40 = 200
+\]</span></p>
 <div class="callout callout-note">
 <p><strong>Interpretation:</strong> A small initial cause, amplified by
 a long chain of consequences, produces a disproportionately large
@@ -3449,21 +3383,21 @@ successful company through many connected events.</p>
 <hr class="section-divider">
 <h3 id="exercise-6-compare-two-inventors">Exercise 6 — Compare Two
 Inventors</h3>
-<p><strong>Inventor A:</strong> <span
-class="math inline"><em>I</em> = 10, <em>K</em> = 7, <em>A</em> = 8, <em>O</em> = 9, <em>U</em> = 2</span></p>
-<p><strong>Inventor B:</strong> <span
-class="math inline"><em>I</em> = 6, <em>K</em> = 9, <em>A</em> = 4, <em>O</em> = 5, <em>U</em> = 3</span></p>
+<p><strong>Inventor A:</strong> <span class="math inline">\(I=10,\;
+K=7,\; A=8,\; O=9,\; U=2\)</span></p>
+<p><strong>Inventor B:</strong> <span class="math inline">\(I=6,\;
+K=9,\; A=4,\; O=5,\; U=3\)</span></p>
 <p><strong>Question:</strong> Who achieves the larger conceptual Reality
 score?</p>
 <p><strong>Solution:</strong></p>
 <p>Inventor A:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R_A = \frac{10 \times 7 \times 8 \times 9}{2} = \frac{5040}{2} = 2520
-$$</span></p>
+\]</span></p>
 <p>Inventor B:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R_B = \frac{6 \times 9 \times 4 \times 5}{3} = \frac{1080}{3} = 360
-$$</span></p>
+\]</span></p>
 <div class="callout callout-note">
 <p><strong>Conclusion:</strong> Under this conceptual model, Inventor A
 achieves a significantly larger Reality score (2520 vs. 360),
@@ -3476,25 +3410,25 @@ slightly lower.</p>
 Feature Development</h3>
 <p>You imagine a new feature for AIRIS CLI.</p>
 <ul>
-<li><span class="math inline"><em>I</em> = 10</span></li>
-<li><span class="math inline"><em>K</em> = 8</span></li>
-<li><span class="math inline"><em>O</em> = 9</span></li>
-<li><span class="math inline"><em>A</em> = 9</span></li>
-<li><span class="math inline"><em>U</em> = 3</span></li>
+<li><span class="math inline">\(I = 10\)</span></li>
+<li><span class="math inline">\(K = 8\)</span></li>
+<li><span class="math inline">\(O = 9\)</span></li>
+<li><span class="math inline">\(A = 9\)</span></li>
+<li><span class="math inline">\(U = 3\)</span></li>
 </ul>
 <p><strong>Question:</strong> Find the conceptual Reality score.</p>
 <p><strong>Solution:</strong></p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 R = \frac{10 \times 8 \times 9 \times 9}{3}
 = \frac{6480}{3}
 = 2160
-$$</span></p>
+\]</span></p>
 <div class="callout callout-note">
 <p><strong>Interpretation:</strong> A well-developed idea supported by
 knowledge, testing, and implementation is highly likely to become a
 working feature. The relatively low uncertainty (<span
-class="math inline"><em>U</em> = 3</span>) reflects prior experience
-with similar features.</p>
+class="math inline">\(U=3\)</span>) reflects prior experience with
+similar features.</p>
 </div>
 <hr class="section-divider">
 <h3 id="exercise-8-reflection-question">Exercise 8 — Reflection
@@ -3537,11 +3471,18 @@ Appendix B — Case Study Timelines
 <div class="callout callout-note">
 <p><strong>Purpose:</strong> This appendix presents detailed case study
 timelines showing how the Antonimus cycle (Imagination <span
-class="math inline">→</span> Knowledge <span
-class="math inline">→</span> Experiment <span
-class="math inline">→</span> Action <span class="math inline">→</span>
-Reality) operates in real-world contexts across engineering,
-architecture, software, and art.</p>
+class="math inline">\(\rightarrow\)</span> Knowledge <span
+class="math inline">\(\rightarrow\)</span> Experiment <span
+class="math inline">\(\rightarrow\)</span> Action <span
+class="math inline">\(\rightarrow\)</span> Reality) operates in
+real-world contexts across engineering, architecture, software, and
+art.</p>
+</div>
+<img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=80" alt="Architecture and innovation: human creation through structured process">
+<div class="img-caption">
+Each case study in this appendix traces the complete Antonimus cycle —
+from initial observation through imagination, knowledge acquisition,
+experimentation, and finally to the realized creation.
 </div>
 <hr class="section-divider">
 <h3 id="b.1-dyson-cyclone-vacuum-and-ballbarrow-engineering">B.1 Dyson
@@ -3572,8 +3513,8 @@ wheel, inspired by military balloon tires.</p>
 </tr>
 <tr>
 <td><strong>Experiment</strong></td>
-<td>Sketches <span class="math inline">→</span> fiberglass prototype
-(ball wheel on a barrow)</td>
+<td>Sketches <span class="math inline">\(\rightarrow\)</span> fiberglass
+prototype (ball wheel on a barrow)</td>
 </tr>
 <tr>
 <td><strong>Action</strong></td>
@@ -3591,11 +3532,12 @@ cyclone vacuum idea</td>
 hand-built over 5,000 prototypes through iterative experimentation
 before achieving a working design.</p>
 <p><strong>Timeline:</strong> 1970s (observation + imagination) <span
-class="math inline">→</span> 1975 (Ballbarrow launch) <span
-class="math inline">→</span> late 1970s (cyclone idea) <span
-class="math inline">→</span> 1983 (first working cyclone prototype)
-<span class="math inline">→</span> 1993 (first mass-market Dyson vacuum
-sold).</p>
+class="math inline">\(\rightarrow\)</span> 1975 (Ballbarrow launch)
+<span class="math inline">\(\rightarrow\)</span> late 1970s (cyclone
+idea) <span class="math inline">\(\rightarrow\)</span> 1983 (first
+working cyclone prototype) <span
+class="math inline">\(\rightarrow\)</span> 1993 (first mass-market Dyson
+vacuum sold).</p>
 <hr class="section-divider">
 <h3 id="b.2-eames-case-study-house-8-architecture">B.2 Eames Case Study
 House #8 (Architecture)</h3>
@@ -3641,9 +3583,11 @@ architecture</td>
 </tbody>
 </table>
 <p><strong>Timeline:</strong> 1945 (initial design concept) <span
-class="math inline">→</span> 1948 (steel arrives, redesign) <span
-class="math inline">→</span> 1949 (construction in 16 hours) <span
-class="math inline">→</span> December 1949 (occupancy).</p>
+class="math inline">\(\rightarrow\)</span> 1948 (steel arrives,
+redesign) <span class="math inline">\(\rightarrow\)</span> 1949
+(construction in 16 hours) <span
+class="math inline">\(\rightarrow\)</span> December 1949
+(occupancy).</p>
 <hr class="section-divider">
 <h3 id="b.3-farnsworth-house-architecture">B.3 Farnsworth House
 (Architecture)</h3>
@@ -3687,9 +3631,10 @@ foundation (5.3 feet)</td>
 </tbody>
 </table>
 <p><strong>Timeline:</strong> 1937 (concept design) <span
-class="math inline">→</span> 1945 (client engagement) <span
-class="math inline">→</span> 1949 (construction begins) <span
-class="math inline">→</span> 1951 (completion).</p>
+class="math inline">\(\rightarrow\)</span> 1945 (client engagement)
+<span class="math inline">\(\rightarrow\)</span> 1949 (construction
+begins) <span class="math inline">\(\rightarrow\)</span> 1951
+(completion).</p>
 <hr class="section-divider">
 <h3 id="b.4-wright-brothers-airplane-aviation">B.4 Wright Brothers’
 Airplane (Aviation)</h3>
@@ -3735,10 +3680,10 @@ controlled, sustained)</td>
 </tbody>
 </table>
 <p><strong>Timeline:</strong> 1899 (began studying flight) <span
-class="math inline">→</span> 1900 (Kitty Hawk experiments) <span
-class="math inline">→</span> 1902 (successful glider) <span
-class="math inline">→</span> December 17, 1903 (first powered
-flight).</p>
+class="math inline">\(\rightarrow\)</span> 1900 (Kitty Hawk experiments)
+<span class="math inline">\(\rightarrow\)</span> 1902 (successful
+glider) <span class="math inline">\(\rightarrow\)</span> December 17,
+1903 (first powered flight).</p>
 <hr class="section-divider">
 <h3 id="b.5-linux-operating-system-software">B.5 Linux Operating System
 (Software)</h3>
@@ -3782,8 +3727,9 @@ devices</td>
 </tbody>
 </table>
 <p><strong>Timeline:</strong> 1991 (project conceived, initial code)
-<span class="math inline">→</span> 1992 (community development) <span
-class="math inline">→</span> March 1994 (Linux 1.0 release).</p>
+<span class="math inline">\(\rightarrow\)</span> 1992 (community
+development) <span class="math inline">\(\rightarrow\)</span> March 1994
+(Linux 1.0 release).</p>
 <hr class="section-divider">
 <h3 id="b.6-michelangelos-david-art">B.6 Michelangelo’s David (Art)</h3>
 <p>Michelangelo’s sculpture of David (1501–1504) exemplifies the
@@ -3825,16 +3771,16 @@ history</td>
 </tbody>
 </table>
 <p><strong>Timeline:</strong> 1501 (commission, initial sketches) <span
-class="math inline">→</span> 1501–1504 (carving) <span
-class="math inline">→</span> 1504 (unveiling).</p>
+class="math inline">\(\rightarrow\)</span> 1501–1504 (carving) <span
+class="math inline">\(\rightarrow\)</span> 1504 (unveiling).</p>
 <div class="callout callout-antonimus">
 <p><strong>Antonimus insight:</strong> In every case above, the final
 reality was preceded by a moment of imagination. The duration,
 complexity, and domain vary, but the pattern is universal: imagination
-<span class="math inline">→</span> knowledge <span
-class="math inline">→</span> experiment <span
-class="math inline">→</span> action <span class="math inline">→</span>
-reality.</p>
+<span class="math inline">\(\rightarrow\)</span> knowledge <span
+class="math inline">\(\rightarrow\)</span> experiment <span
+class="math inline">\(\rightarrow\)</span> action <span
+class="math inline">\(\rightarrow\)</span> reality.</p>
 </div>
 <hr class="chapter-divider">
 <h2 id="appendix-c">
@@ -3845,6 +3791,12 @@ Appendix C — Research Methods and Experimental Projects
 methods, ideation techniques, and experimental projects for studying and
 applying the Antonimus framework in educational and research
 settings.</p>
+</div>
+<img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Scientific research: systematic experimentation in the laboratory">
+<div class="img-caption">
+The scientific method and the Antonimus framework share a core
+commitment: observation leads to knowledge, knowledge guides
+experimentation, and evidence refines understanding.
 </div>
 <hr class="section-divider">
 <h3 id="c.1-creativity-and-ideation-methods">C.1 Creativity and Ideation
@@ -3898,10 +3850,11 @@ architecture?</td>
 </tr>
 <tr>
 <td><strong>Design Thinking</strong></td>
-<td>Iterative process: Empathize <span class="math inline">→</span>
-Define <span class="math inline">→</span> Ideate <span
-class="math inline">→</span> Prototype <span
-class="math inline">→</span> Test.</td>
+<td>Iterative process: Empathize <span
+class="math inline">\(\rightarrow\)</span> Define <span
+class="math inline">\(\rightarrow\)</span> Ideate <span
+class="math inline">\(\rightarrow\)</span> Prototype <span
+class="math inline">\(\rightarrow\)</span> Test.</td>
 <td>Develop a solution for a real user need through user research and
 prototyping</td>
 </tr>
@@ -4150,9 +4103,9 @@ Mermaid code blocks natively, export diagrams as PNG/SVG images using a
 Mermaid live editor (<a href="https://mermaid.live">mermaid.live</a>)
 and embed them with standard Markdown image syntax.</li>
 <li><strong>Equations:</strong> If the wiki does not support LaTeX math
-(<span class="math inline">...</span> or <span
-class="math display">...</span>), consider using Unicode characters or
-embedded images for equations.</li>
+(<span class="math inline">\(...\)</span> or <span
+class="math display">\[...\]</span>), consider using Unicode characters
+or embedded images for equations.</li>
 </ol>
 <hr class="section-divider">
 <h3 id="e.2-creating-the-wiki-page">E.2 Creating the Wiki Page</h3>
@@ -4239,7 +4192,7 @@ date</label></li>
 ├── 13. Islam and Antonimus
 ├── 14. Criticism and Evaluation
 ├── 15. Conclusion
-└── Appendices (A–E)</code></pre>
+└── Appendices (A–J): Exercises, Case Studies, Methods, Sources, Publishing Guide, Educational Framework, Equation Sheets, Glossary, Research Roadmap, Principle of Fundamental Discovery</code></pre>
 <hr />
 <div class="callout callout-antonimus">
 <p><strong>Congratulations on publishing the Antonimus Theory of
@@ -4247,6 +4200,778 @@ Reality.</strong> This philosophical framework invites discussion,
 critique, and refinement. Share it with scholars, students, and thinkers
 across disciplines to continue the dialogue between imagination and
 reality.</p>
+</div>
+<hr class="chapter-divider">
+<h2 id="appendix-f">
+Appendix F — Educational Framework
+</h2>
+<div class="callout callout-note">
+<p><strong>Purpose:</strong> This appendix provides a complete
+educational framework for teaching the Antonimus Theory of Reality in
+academic, workshop, or self-study settings. It includes learning
+objectives, a syllabus, discussion questions, assessment methods, and a
+study guide.</p>
+</div>
+<hr class="section-divider">
+<h3 id="f.1-learning-objectives">F.1 Learning Objectives</h3>
+<p>Upon completing this book, learners will be able to:</p>
+<ol type="1">
+<li><strong>Explain</strong> the core thesis of Antonimus: that every
+human creation first existed as imagination.</li>
+<li><strong>Articulate</strong> the Universal Antonimus Law and its six
+components.</li>
+<li><strong>Apply</strong> the Antonimus equations as conceptual models
+to analyze real-world innovations.</li>
+<li><strong>Compare</strong> human and artificial intelligence across
+multiple cognitive dimensions.</li>
+<li><strong>Evaluate</strong> the strengths and limitations of the
+Antonimus framework.</li>
+<li><strong>Design</strong> small experiments that test Antonimus
+principles.</li>
+<li><strong>Connect</strong> Antonimus concepts with established
+theories in cognitive science, philosophy, and Islamic thought.</li>
+<li><strong>Critique</strong> the framework’s claims and identify areas
+for refinement.</li>
+</ol>
+<hr class="section-divider">
+<h3 id="f.2-suggested-syllabus-12-week-course">F.2 Suggested Syllabus
+(12-Week Course)</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Week</th>
+<th>Topic</th>
+<th>Reading</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Introduction: Why imagination precedes creation</td>
+<td>Section 1</td>
+<td>Brainstorming exercise</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What is Reality? What is Imagination?</td>
+<td>Sections 1–2</td>
+<td>Observation journal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The Universal Antonimus Law</td>
+<td>Section 2</td>
+<td>Personal project analysis</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Conceptual Equations I</td>
+<td>Sections 3, 7, 10, Appendix A</td>
+<td>Complete Exercises 1–4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Conceptual Equations II</td>
+<td>Sections 4, 6, Appendix A</td>
+<td>Complete Exercises 5–8</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Practical Examples Workshop</td>
+<td>Section 8, Appendix B</td>
+<td>Bring case study</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The 15 Laws of Antonimus</td>
+<td>Section 9</td>
+<td>Debate: most/least defensible law</td>
+</tr>
+<tr>
+<td>8</td>
+<td>AI vs Human Intelligence</td>
+<td>Section 11</td>
+<td>Compare AI vs human creation</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Dimensions: Physical and Philosophical</td>
+<td>Section 12</td>
+<td>Possibility space map</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Islam and Antonimus</td>
+<td>Section 13</td>
+<td>Independent research</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Criticism and Evaluation</td>
+<td>Section 14</td>
+<td>Write 500-word critique</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Final Project and Review</td>
+<td>All sections</td>
+<td>Antonimus analysis presentation</td>
+</tr>
+</tbody>
+</table>
+<hr class="section-divider">
+<h3 id="f.3-discussion-questions">F.3 Discussion Questions</h3>
+<p><strong>Section 1 (Introduction):</strong> Can you think of a human
+creation that did NOT first exist as imagination? Why is observation
+alone insufficient for innovation?</p>
+<p><strong>Section 2 (Universal Law):</strong> Which component is most
+often missing in failed projects? Does time always improve outcomes?</p>
+<p><strong>Section 9 (Laws):</strong> Is Law 11 contradicted by any
+other law? How would you test Law 7 empirically?</p>
+<p><strong>Section 11 (AI vs Humans):</strong> If AI generates a novel
+solution no human has thought of, does that count as imagination?</p>
+<p><strong>Section 13 (Islam):</strong> How does khilafa relate to
+Antonimus emphasis on responsible creation?</p>
+<p><strong>Section 14 (Criticism):</strong> Which objection do you find
+most compelling? What additional criticism would you add?</p>
+<hr class="section-divider">
+<h3 id="f.4-assessment-methods">F.4 Assessment Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Suggested Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reading Responses</td>
+<td>Weekly 300-word reflections</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Case Study Analysis</td>
+<td>Apply Antonimus to a real innovation</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Experimental Project</td>
+<td>Design and run a test</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Final Critique</td>
+<td>1500-word critical evaluation</td>
+<td>30%</td>
+</tr>
+</tbody>
+</table>
+<hr class="section-divider">
+<h3 id="f.5-self-study-guide">F.5 Self-Study Guide</h3>
+<ol type="1">
+<li>Start with Abstract and Introduction</li>
+<li>Read Sections 1–7 sequentially</li>
+<li>Complete Appendix A exercises</li>
+<li>Analyze one case study from Appendix B</li>
+<li>Read your most relevant section first</li>
+<li>Write your own critique before reading Section 14</li>
+<li>Design a small experiment using Appendix C</li>
+</ol>
+<hr class="chapter-divider">
+<h2 id="appendix-g">
+Appendix G — Equation Reference Sheets
+</h2>
+<div class="callout callout-warning">
+<p><strong>Important:</strong> This appendix provides detailed reference
+sheets for each Antonimus conceptual equation. Every entry includes
+variable definitions, derivation notes, worked examples, limitations,
+and a disclaimer. <strong>These are conceptual models, not established
+scientific equations.</strong></p>
+</div>
+<hr class="section-divider">
+<h3 id="g.1-reality-formation-r-i-times-k-times-a">G.1 Reality
+Formation: <span class="math inline">\(R = I \times K \times
+A\)</span></h3>
+<p><strong>Status:</strong> <span class="tag tag-antonimus">CONCEPTUAL
+MODEL</span></p>
+<p><strong>Variables:</strong> <span class="math inline">\(R\)</span> =
+Reality (0 to high), <span class="math inline">\(I\)</span> =
+Imagination (0–10), <span class="math inline">\(K\)</span> = Knowledge
+(0–10), <span class="math inline">\(A\)</span> = Action (0–10).</p>
+<p><strong>Derivation:</strong> Derived from the observation that all
+three factors are necessary for creation. Multiplicative form expresses
+that if any factor is zero, the outcome is zero.</p>
+<p><strong>Worked example:</strong> Bridge project: <span
+class="math inline">\(I=9, K=8, A=9 \rightarrow R = 9\times8\times9 =
+648\)</span>. If <span class="math inline">\(A=0\)</span>: <span
+class="math inline">\(R=0\)</span>.</p>
+<p><strong>Limitations:</strong> Assumes variable independence; no
+empirical scale; doesn’t account for external factors.</p>
+<hr class="section-divider">
+<h3 id="g.2-universal-equation-r-fi-k-o-a-t">G.2 Universal Equation:
+<span class="math inline">\(R = f(I, K, O, A, T)\)</span></h3>
+<p><strong>Status:</strong> <span class="tag tag-antonimus">CONCEPTUAL
+MODEL</span></p>
+<p><strong>Variables:</strong> Adds <span
+class="math inline">\(O\)</span> = Observation, <span
+class="math inline">\(T\)</span> = Time to the Reality Formation
+variables. <span class="math inline">\(f\)</span> is an unspecified
+function.</p>
+<p><strong>Derivation:</strong> Extends Reality Formation by including
+Observation (feedback) and Time (temporal dimension) as explicit
+factors. Function <span class="math inline">\(f\)</span> intentionally
+unspecified due to context-dependent interactions.</p>
+<p><strong>Limitations:</strong> Function not specified, limiting
+predictive utility; cannot be evaluated numerically without
+assumptions.</p>
+<hr class="section-divider">
+<h3 id="g.3-expanded-equation-r-i-times-k-times-a-times-o-u">G.3
+Expanded Equation: <span class="math inline">\(R = ((I \times K \times
+A) \times O) / U\)</span></h3>
+<p><strong>Status:</strong> <span class="tag tag-antonimus">CONCEPTUAL
+MODEL</span></p>
+<p><strong>Variables:</strong> Adds <span
+class="math inline">\(U\)</span> = Uncertainty (range: 1 to large).</p>
+<p><strong>Derivation:</strong> Uncertainty introduced as divisor
+because greater uncertainty reduces successful outcomes. <span
+class="math inline">\(O\)</span> multiplies the product as validating
+feedback.</p>
+<p><strong>Worked example:</strong> <span class="math inline">\(I=8,
+K=9, A=7, O=10, U=2 \rightarrow R = (8\times9\times7)\times10/2 =
+2520\)</span>. Same with <span class="math inline">\(U=20\)</span>:
+<span class="math inline">\(R=252\)</span>.</p>
+<p><strong>Limitations:</strong> <span class="math inline">\(U\)</span>
+not independently measurable; assumes uniform effect of uncertainty.</p>
+<hr class="section-divider">
+<h3 id="g.4-prediction-equation-p-i-e-k">G.4 Prediction Equation: <span
+class="math inline">\(P = I + E + K\)</span></h3>
+<p><strong>Status:</strong> <span class="tag tag-antonimus">CONCEPTUAL
+MODEL</span></p>
+<p><strong>Variables:</strong> <span class="math inline">\(P\)</span> =
+Prediction, <span class="math inline">\(E\)</span> = Experience.</p>
+<p><strong>Derivation:</strong> Additive form indicates partial
+substitutability of experience and knowledge. Consistent with cognitive
+science research on episodic and semantic memory contributions to
+prediction.</p>
+<p><strong>Worked example:</strong> <span class="math inline">\(I=9,
+E=8, K=10 \rightarrow P = 9+8+10 = 27\)</span>.</p>
+<p><strong>Limitations:</strong> Additive form is a simplification; no
+empirical weighting for each factor.</p>
+<hr class="section-divider">
+<h3 id="g.5-small-cause-law-g-s-times-c">G.5 Small Cause Law: <span
+class="math inline">\(G = s \times C\)</span></h3>
+<p><strong>Status:</strong> <span class="tag tag-antonimus">CONCEPTUAL
+MODEL</span></p>
+<p><strong>Variables:</strong> <span class="math inline">\(G\)</span> =
+Great Outcome, <span class="math inline">\(s\)</span> = Small Cause,
+<span class="math inline">\(C\)</span> = Chain of Consequences.</p>
+<p><strong>Derivation:</strong> Models how small initial conditions
+produce large outcomes through amplification mechanisms (network
+effects, iteration, threshold crossing). <span class="math inline">\(C
+&gt; 1\)</span> = amplification; <span class="math inline">\(C &lt;
+1\)</span> = dissipation.</p>
+<p><strong>Limitations:</strong> <span class="math inline">\(C\)</span>
+difficult to predict in advance; doesn’t specify which chains
+amplify.</p>
+<hr class="section-divider">
+<h3
+id="g.6-human-creation-cycle-i-rightarrow-k-rightarrow-e-rightarrow-a-rightarrow-r">G.6
+Human Creation Cycle: <span class="math inline">\(I \rightarrow K
+\rightarrow E \rightarrow A \rightarrow R\)</span></h3>
+<p><strong>Status:</strong> <span class="tag tag-antonimus">CONCEPTUAL
+MODEL</span></p>
+<p><strong>Variables:</strong> Sequential process with feedback arrows
+(not shown in linear form).</p>
+<p><strong>Derivation:</strong> Generalized temporal sequence from case
+studies across engineering, science, art, and technology.</p>
+<p><strong>Limitations:</strong> Actual process is iterative and
+non-linear; feedback loops not shown in simple form.</p>
+<hr class="chapter-divider">
+<h2 id="appendix-h">
+Appendix H — Glossary of Terms
+</h2>
+<div class="callout callout-note">
+<p><strong>Purpose:</strong> This glossary defines key terms used
+throughout the Antonimus Theory of Reality. Terms marked with an
+asterisk (*) are original Antonimus concepts; others are standard terms
+used within the framework.</p>
+</div>
+<hr class="section-divider">
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Action *</strong></td>
+<td>The physical process that converts imagination into reality</td>
+<td>Section 2</td>
+</tr>
+<tr>
+<td><strong>Chain of Consequences *</strong></td>
+<td>Amplification mechanism for small causes</td>
+<td>Section 6</td>
+</tr>
+<tr>
+<td><strong>Creation Cycle *</strong></td>
+<td><span class="math inline">\(I \rightarrow K \rightarrow E
+\rightarrow A \rightarrow R\)</span> sequence</td>
+<td>Section 7</td>
+</tr>
+<tr>
+<td><strong>Dimensions (Phil.) *</strong></td>
+<td>Axes of variation in possibility space</td>
+<td>Section 12</td>
+</tr>
+<tr>
+<td><strong>Expanded Equation *</strong></td>
+<td><span class="math inline">\(R = ((I \times K \times A) \times O) /
+U\)</span></td>
+<td>Section 4</td>
+</tr>
+<tr>
+<td><strong>Experience</strong></td>
+<td>Accumulated patterns from past outcomes</td>
+<td>Section 5</td>
+</tr>
+<tr>
+<td><strong>Human Creation Eq. *</strong></td>
+<td><span class="math inline">\(I \rightarrow K \rightarrow E
+\rightarrow A \rightarrow R\)</span></td>
+<td>Section 7</td>
+</tr>
+<tr>
+<td><strong>Imagination *</strong></td>
+<td>Faculty of forming mental representations not present to senses</td>
+<td>Sections 1–2</td>
+</tr>
+<tr>
+<td><strong>Knowledge *</strong></td>
+<td>Structured understanding guiding imagination</td>
+<td>Section 2</td>
+</tr>
+<tr>
+<td><strong>Laws of Antonimus *</strong></td>
+<td>15 philosophical principles</td>
+<td>Section 9</td>
+</tr>
+<tr>
+<td><strong>Observation *</strong></td>
+<td>Empirical verification reducing uncertainty</td>
+<td>Sections 2, 4</td>
+</tr>
+<tr>
+<td><strong>Possibility Space *</strong></td>
+<td>Multi-dimensional space of variations</td>
+<td>Sections 6, 12</td>
+</tr>
+<tr>
+<td><strong>Prediction Equation *</strong></td>
+<td><span class="math inline">\(P = I + E + K\)</span></td>
+<td>Section 5</td>
+</tr>
+<tr>
+<td><strong>Reality *</strong></td>
+<td>Observable, measurable world</td>
+<td>Section 1</td>
+</tr>
+<tr>
+<td><strong>Reality Formation *</strong></td>
+<td><span class="math inline">\(R = I \times K \times A\)</span></td>
+<td>Section 3</td>
+</tr>
+<tr>
+<td><strong>Small Cause Law *</strong></td>
+<td><span class="math inline">\(G = s \times C\)</span></td>
+<td>Section 6</td>
+</tr>
+<tr>
+<td><strong>Time *</strong></td>
+<td>Temporal dimension revealing endurance</td>
+<td>Section 2</td>
+</tr>
+<tr>
+<td><strong>Uncertainty *</strong></td>
+<td>Unknowns reducing successful outcomes</td>
+<td>Section 4</td>
+</tr>
+<tr>
+<td><strong>Universal Law *</strong></td>
+<td>Six-part statement of the framework</td>
+<td>Section 2</td>
+</tr>
+<tr>
+<td><strong>Creativity</strong></td>
+<td>Capacity to generate novel value</td>
+<td>Sections 1, 11</td>
+</tr>
+<tr>
+<td><strong>Epistemology</strong></td>
+<td>Branch of philosophy on knowledge</td>
+<td>Section 11</td>
+</tr>
+<tr>
+<td><strong>Khilafa</strong></td>
+<td>Islamic concept of stewardship</td>
+<td>Section 13</td>
+</tr>
+<tr>
+<td><strong>Ontology</strong></td>
+<td>Branch of philosophy on reality</td>
+<td>Section 1</td>
+</tr>
+<tr>
+<td><strong>Qualia</strong></td>
+<td>Subjective conscious experience</td>
+<td>Section 11</td>
+</tr>
+<tr>
+<td><strong>Simulation (Mental)</strong></td>
+<td>Cognitive capacity to model outcomes</td>
+<td>Sections 2, 5</td>
+</tr>
+</tbody>
+</table>
+<hr class="chapter-divider">
+<h2 id="appendix-i">
+Appendix I — Future Research Roadmap
+</h2>
+<div class="callout callout-note">
+<p><strong>Purpose:</strong> This appendix provides a structured roadmap
+for future research on the Antonimus framework, identifying priority
+areas, proposed methodologies, and anticipated milestones.</p>
+</div>
+<hr class="section-divider">
+<h3 id="i.1-research-priorities">I.1 Research Priorities</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Area</th>
+<th>Key Question</th>
+<th>Methodology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Empirical validation</td>
+<td>Can the Antonimus cycle be measured?</td>
+<td>Controlled experiments (Appendix C)</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Neuroscientific basis</td>
+<td>What neural networks support imagination-to-action?</td>
+<td>fMRI, EEG studies</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>AI integration</td>
+<td>Can AI genuinely collaborate in the cycle?</td>
+<td>Human-AI co-creation experiments</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Cross-cultural validation</td>
+<td>Does the framework hold across traditions?</td>
+<td>Comparative philosophy studies</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>Educational applications</td>
+<td>Does teaching Antonimus improve creativity?</td>
+<td>Controlled educational interventions</td>
+</tr>
+</tbody>
+</table>
+<hr class="section-divider">
+<h3 id="i.2-proposed-timeline">I.2 Proposed Timeline</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Timeframe</th>
+<th>Goals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1</td>
+<td>0–6 months</td>
+<td>Publish framework, gather feedback, establish repository</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>6–18 months</td>
+<td>Conduct pilot experiments, recruit collaborators</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>18–36 months</td>
+<td>Expand empirical base, develop educational materials</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>36–60 months</td>
+<td>Refine framework, develop AI integration</td>
+</tr>
+</tbody>
+</table>
+<hr class="section-divider">
+<h3 id="i.3-open-questions">I.3 Open Questions</h3>
+<p><strong>Theoretical:</strong> Can <span
+class="math inline">\(f\)</span> in the Universal Equation be specified?
+What is the relationship between <span class="math inline">\(U\)</span>
+and <span class="math inline">\(K\)</span>? Can the Small Cause Law be
+formalized using chaos theory or network theory?</p>
+<p><strong>Empirical:</strong> What is the relative importance of each
+variable across domains? Does <span class="math inline">\(R = I \times K
+\times A\)</span> hold approximately? How does uncertainty interact with
+observation?</p>
+<p><strong>Applied:</strong> Can Antonimus improve engineering design?
+Can it diagnose project failures? What capabilities would AI need to
+genuinely imagine?</p>
+<hr class="section-divider">
+<h3 id="i.4-collaboration-opportunities">I.4 Collaboration
+Opportunities</h3>
+<p>Researchers and practitioners are invited to: design experiments (see
+Appendix C), collect case studies (see Appendix B), develop educational
+materials (see Appendix F), translate the framework, and critique its
+assumptions.</p>
+<div class="callout callout-philosophy">
+<p><strong>Open science commitment:</strong> All materials related to
+the Antonimus framework will be made openly available under CC BY
+4.0.</p>
+</div>
+<hr class="chapter-divider">
+<h2 id="appendix-j">
+Appendix J — Antonimus Principle of Fundamental Discovery
+</h2>
+<div class="callout callout-antonimus">
+<p><strong>Status:</strong> Methodological principle — not a law of
+physics.</p>
+</div>
+<hr class="section-divider">
+<h3 id="j.1-core-principle">J.1 Core Principle</h3>
+<p>Complex systems emerge from simpler components. By understanding the
+smallest relevant building blocks, humans can better understand,
+predict, and create larger systems.</p>
+<img src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?auto=format&fit=crop&w=800&q=80" alt="Microscopic exploration: observing the smallest meaningful components">
+<div class="img-caption">
+The Antonimus Principle of Fundamental Discovery begins at the smallest
+meaningful level — whether nanoscale, cellular, or elemental — and
+builds understanding upward from there.
+</div>
+<p>Antonimus proposes that discovery begins by observing the smallest
+meaningful level of a problem before attempting to explain or redesign
+the whole system.</p>
+<div class="callout callout-warning">
+<p><strong>Disclaimer:</strong> This is a methodological principle for
+research, not a new law of physics.</p>
+</div>
+<hr class="section-divider">
+<h3 id="j.2-the-antonimus-discovery-cycle">J.2 The Antonimus Discovery
+Cycle</h3>
+<div class="callout callout-science">
+<p><strong>Discovery as a structured process:</strong> The Antonimus
+Discovery Cycle formalizes the path from observing reality to creating
+innovation. Each step builds on the previous one, and iteration is
+expected.</p>
+</div>
+<pre><code>Reality
+    ↓
+Observation
+    ↓
+Identify the Smallest Relevant Components
+    ↓
+Acquire Knowledge
+    ↓
+Imagination
+    ↓
+Hypothesis
+    ↓
+Mathematical Model
+    ↓
+Prediction
+    ↓
+Experiment
+    ↓
+Evidence
+    ↓
+Improved Understanding
+    ↓
+Innovation</code></pre>
+<div class="callout callout-note">
+<p><strong>Key insight:</strong> This cycle extends the earlier
+<a href="#s7">Human Creation Equation</a> (Section 7) by adding explicit
+steps for hypothesis formation, mathematical modeling, prediction, and
+experimental verification. It bridges the conceptual framework with the
+scientific method.</p>
+</div>
+<hr class="section-divider">
+<h3 id="j.3-the-principle-of-small-causes">J.3 The Principle of Small
+Causes</h3>
+<p>Many important systems are built from smaller interacting parts.
+Understanding these foundational components often leads to a deeper
+understanding of the complete system.</p>
+<table>
+<thead>
+<tr>
+<th>Small Component</th>
+<th>Larger System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quarks</td>
+<td>Protons and neutrons</td>
+</tr>
+<tr>
+<td>Protons, neutrons, electrons</td>
+<td>Atoms</td>
+</tr>
+<tr>
+<td>Atoms</td>
+<td>Molecules</td>
+</tr>
+<tr>
+<td>Molecules</td>
+<td>Materials</td>
+</tr>
+<tr>
+<td>DNA</td>
+<td>Biological information</td>
+</tr>
+<tr>
+<td>Cells</td>
+<td>Living organisms</td>
+</tr>
+<tr>
+<td>Neurons</td>
+<td>Brain networks</td>
+</tr>
+<tr>
+<td>Transistors</td>
+<td>Computer processors</td>
+</tr>
+<tr>
+<td>Bits</td>
+<td>Software systems</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-philosophy">
+<p><strong>Relationship to the Small Cause Law:</strong> The Principle
+of Small Causes complements the <a href="#s6">Small Cause Law</a>
+(Section 6). While the Small Cause Law explains <em>how</em> small
+inputs amplify into large outcomes, the Principle of Small Causes
+provides a <em>methodology</em> for discovery: identify the smallest
+relevant components first.</p>
+</div>
+<hr class="section-divider">
+<h3 id="j.4-antonimus-and-nanotechnology">J.4 Antonimus and
+Nanotechnology</h3>
+<p>Antonimus does not attempt to replace nanoscience. Instead, it
+provides a structured method for discovery at the nanoscale.</p>
+<div class="callout callout-science">
+<p><strong>Nanotechnology Research Framework</strong></p>
+</div>
+<pre><code>Observe a material
+    ↓
+Study its atomic and nanoscale structure
+    ↓
+Understand how structure affects properties
+    ↓
+Imagine improvements
+    ↓
+Develop mathematical and computational models
+    ↓
+Design a new nanomaterial
+    ↓
+Simulate its behavior
+    ↓
+Test experimentally
+    ↓
+Analyze evidence
+    ↓
+Refine the design
+    ↓
+Repeat until a reliable result is achieved</code></pre>
+<hr class="section-divider">
+<h3 id="j.5-research-questions">J.5 Research Questions</h3>
+<p>The Antonimus Principle of Fundamental Discovery encourages the
+following research hypotheses:</p>
+<ul>
+<li>Can structured observation improve nanomaterial discovery?</li>
+<li>Can mathematical models guide imagination toward more effective
+designs?</li>
+<li>Can AI and human creativity work together to discover new
+materials?</li>
+<li>Which nanoscale structures produce the greatest changes in material
+properties?</li>
+<li>Can a systematic discovery process reduce the time needed to develop
+new technologies?</li>
+</ul>
+<div class="callout callout-note">
+<p>These questions are research hypotheses that can be investigated
+scientifically.</p>
+</div>
+<hr class="section-divider">
+<h3 id="j.6-long-term-vision">J.6 Long-Term Vision</h3>
+<p>Antonimus aims to become a philosophy and methodology of scientific
+discovery. Its purpose is to help researchers organize the path from
+observation to innovation by integrating:</p>
+<ul>
+<li>Observation</li>
+<li>Knowledge</li>
+<li>Imagination</li>
+<li>Mathematics</li>
+<li>Prediction</li>
+<li>Experimentation</li>
+<li>Evidence</li>
+<li>Continuous refinement</li>
+</ul>
+<div class="callout callout-philosophy">
+<p><strong>Relationship to the scientific method:</strong> Antonimus
+does not replace the scientific method. It seeks to strengthen how
+humans think, learn, and discover within the scientific method.</p>
+</div>
+<hr class="section-divider">
+<h3 id="j.7-mission-statement">J.7 Mission Statement</h3>
+<div class="callout callout-antonimus">
+<p><strong>Antonimus Mission:</strong> To help humanity transform
+careful observation into deeper knowledge, disciplined imagination into
+testable hypotheses, and scientific evidence into discoveries that
+improve the world — from the nanoscale to the cosmic scale.</p>
 </div>
 <hr class="chapter-divider">
 <h2 id="references">
@@ -4359,116 +5084,49 @@ engage critically with its ideas, verify its claims, and contribute to
 its development.</em><br><br> First published: July 2026</p>
 </div>
 
-<div class="doc-footer">
-<strong>Antonimus Theory of Reality</strong><br>
-Author: <strong>Umaiz Sufiyan</strong><br>
-<em>This document is a philosophical work. It is not a scientific publication and has not been peer-reviewed through scientific channels.</em>
+    <!-- Previous / Next navigation -->
+    <div id="prev-next"></div>
+
+    <!-- Footer -->
+    <footer class="doc-footer" role="contentinfo">
+      <p><strong>Antonimus Theory of Reality</strong> by <strong>Umaiz Sufiyan</strong> &mdash; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license">CC BY 4.0</a></p>
+      <p>Version 3.0 &mdash; Published July 2026 &mdash; <a href="https://github.com/sufiyan-sabeel/Antonimus-theory-of-reality-" target="_blank">GitHub Repository</a></p>
+    </footer>
+  </div>
+</main>
+
+<!-- ============================================================ -->
+<!-- BACK TO TOP                                                  -->
+<!-- ============================================================ -->
+<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+
+<!-- ============================================================ -->
+<!-- KEYBOARD SHORTCUTS MODAL                                     -->
+<!-- ============================================================ -->
+<div id="shortcuts-modal" class="shortcuts-modal" role="dialog" aria-label="Keyboard shortcuts">
+  <div class="modal-content">
+    <button class="close-modal" aria-label="Close">&times;</button>
+    <h3>Keyboard Shortcuts</h3>
+    <table>
+      <tr><td><kbd>?</kbd></td><td>Show this help</td></tr>
+      <tr><td><kbd>Ctrl+K</kbd> or <kbd>/</kbd></td><td>Search</td></tr>
+      <tr><td><kbd>F</kbd></td><td>Toggle focus mode</td></tr>
+      <tr><td><kbd>B</kbd></td><td>Bookmark current page</td></tr>
+      <tr><td><kbd>Alt</kbd> + <kbd>&larr;</kbd></td><td>Previous chapter</td></tr>
+      <tr><td><kbd>Alt</kbd> + <kbd>&rarr;</kbd></td><td>Next chapter</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Close modals / search</td></tr>
+    </table>
+  </div>
 </div>
 
 <!-- ============================================================ -->
-<!-- ANIMATION & INTERACTION SCRIPTS                              -->
+<!-- JAVASCRIPT MODULES                                           -->
 <!-- ============================================================ -->
-<script>
-(function() {
-  'use strict';
-  
-  // ---- Reading Progress Bar ----
-  const progressBar = document.getElementById('reading-progress');
-  function updateProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = progress + '%';
-  }
-  window.addEventListener('scroll', updateProgress);
-  window.addEventListener('resize', updateProgress);
-  updateProgress();
-  
-  // ---- Scroll-Triggered Reveal Animations ----
-  const revealElements = document.querySelectorAll(
-    '.callout, .law-box, .equation-box, table, img'
-  );
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
-  });
-  
-  revealElements.forEach(el => observer.observe(el));
-  
-  // ---- Section fade-in for major headings ----
-  const sections = document.querySelectorAll('h2, h3, .abstract-box, .toc');
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '0';
-        entry.target.style.transform = 'translateY(20px)';
-        entry.target.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-        requestAnimationFrame(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        });
-        sectionObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  
-  sections.forEach(el => {
-    // Skip elements already inside a revealed parent
-    if (!el.closest('.callout, .law-box, .equation-box')) {
-      sectionObserver.observe(el);
-    }
-  });
-  
-  // ---- Ornamental Divider Insertion ----
-  const dividers = document.querySelectorAll('hr.chapter-divider');
-  dividers.forEach(hr => {
-    const ornament = document.createElement('div');
-    ornament.className = 'ornament-divider';
-    ornament.innerHTML = '\u2767 \u2022 \u2767';
-    ornament.style.cssText = 'text-align:center;margin:25px 0;color:#CD853F;font-size:16pt;letter-spacing:10px;opacity:0.4;user-select:none;';
-    hr.parentNode.insertBefore(ornament, hr.nextSibling);
-  });
-  
-  // ---- Pull Quote Detection ----
-  // Any blockquote that is the only content in a section becomes a pull quote
-  // (keeps existing blockquote styling, just visual enhancement)
-  
-  // ---- Smooth hash scroll offset ----
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === '#') return;
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        const offset = 20;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-  
-  // ---- Initial reveal for elements already visible ----
-  setTimeout(() => {
-    revealElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        el.classList.add('revealed');
-        observer.unobserve(el);
-      }
-    });
-  }, 200);
-  
-})();
-</script>
-
+<script src="js/theme.js"></script>
+<script src="js/math.js"></script>
+<script src="js/search.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pwa.js"></script>
 </body>
 </html>

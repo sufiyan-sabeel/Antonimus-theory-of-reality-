@@ -528,6 +528,9 @@ A purely AI-driven weather model might produce more accurate short-term predicti
 
 The Small Cause Law formalizes a recurring pattern in nature and human civilization: small initial conditions can produce disproportionately large outcomes.
 
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Small causes, great outcomes: the growth of civilization from humble beginnings">
+<div class="img-caption">From a single seed to a forest; from one idea to a civilization — small causes propagate into great outcomes through chains of consequence.</div>
+
 <div class="equation-box">
 <h3>Small Cause Law</h3>
 
@@ -576,6 +579,9 @@ $$
 <hr class="chapter-divider">
 
 <h2 id="s7">7. Human Creation Equation</h2>
+
+<img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=800&q=80" alt="The creative process: from imagination to realized creation">
+<div class="img-caption">Human creation follows a temporal sequence: imagination conceives, knowledge guides, experimentation refines, action executes, and reality receives the result.</div>
 
 ### 7.1 The Sequential Model
 
@@ -637,6 +643,9 @@ graph TD
 <h2 id="s8">8. Practical Examples</h2>
 
 The following examples illustrate the Antonimus framework across domains — from nature to technology, from art to science. Each example traces the path from observation or imagination to realized outcome.
+
+<img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=800&q=80" alt="Engineering innovation: transforming imagination into practical reality">
+<div class="img-caption">Every practical innovation follows the Antonimus cycle: observation sparks imagination, knowledge guides development, and action produces the realized outcome.</div>
 
 ### 8.1 Nature-Inspired Creations
 
@@ -945,6 +954,9 @@ This is a process equation rather than a quantitative relation. It describes the
 ### 11.1 A Multi-Dimensional Comparison
 
 The relationship between human intelligence and artificial intelligence is a subject of active research and debate. Antonimus offers a framework for comparison across multiple dimensions, recognizing that the two are qualitatively different in several important respects.
+
+<img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80" alt="Human and artificial intelligence: complementary or competing?">
+<div class="img-caption">Human intelligence operates through embodied experience, qualia, and causal reasoning; AI processes patterns at scale without subjective awareness. The Antonimus framework illuminates where each excels.</div>
 
 ### 11.2 Comparison Table
 
@@ -1491,6 +1503,9 @@ Without these supporting factors, imagination remains fantasy.
 <strong>Purpose:</strong> This appendix presents detailed case study timelines showing how the Antonimus cycle (Imagination $\rightarrow$ Knowledge $\rightarrow$ Experiment $\rightarrow$ Action $\rightarrow$ Reality) operates in real-world contexts across engineering, architecture, software, and art.
 </div>
 
+<img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=80" alt="Architecture and innovation: human creation through structured process">
+<div class="img-caption">Each case study in this appendix traces the complete Antonimus cycle — from initial observation through imagination, knowledge acquisition, experimentation, and finally to the realized creation.</div>
+
 <hr class="section-divider">
 
 ### B.1 Dyson Cyclone Vacuum and Ballbarrow (Engineering)
@@ -1600,6 +1615,9 @@ Michelangelo's sculpture of David (1501–1504) exemplifies the Antonimus cycle 
 <div class="callout callout-note">
 <strong>Purpose:</strong> This appendix provides practical research methods, ideation techniques, and experimental projects for studying and applying the Antonimus framework in educational and research settings.
 </div>
+
+<img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Scientific research: systematic experimentation in the laboratory">
+<div class="img-caption">The scientific method and the Antonimus framework share a core commitment: observation leads to knowledge, knowledge guides experimentation, and evidence refines understanding.</div>
 
 <hr class="section-divider">
 
@@ -2091,6 +2109,9 @@ Researchers and practitioners are invited to: design experiments (see Appendix C
 ### J.1 Core Principle
 
 Complex systems emerge from simpler components. By understanding the smallest relevant building blocks, humans can better understand, predict, and create larger systems.
+
+<img src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?auto=format&fit=crop&w=800&q=80" alt="Microscopic exploration: observing the smallest meaningful components">
+<div class="img-caption">The Antonimus Principle of Fundamental Discovery begins at the smallest meaningful level — whether nanoscale, cellular, or elemental — and builds understanding upward from there.</div>
 
 Antonimus proposes that discovery begins by observing the smallest meaningful level of a problem before attempting to explain or redesign the whole system.
 
