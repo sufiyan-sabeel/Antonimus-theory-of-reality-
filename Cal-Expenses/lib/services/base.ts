@@ -1,6 +1,6 @@
-import { getStorageSync, StorageKeys } from "../storage/keys";
+import { StorageKeys } from "../storage/keys";
 import type { StorageKey } from "../storage/keys";
-import { getStorage } from "../storage/storage-provider";
+import { getStorage, getStorageSync } from "../storage/storage-provider";
 
 export async function loadList<T>(key: string): Promise<T[]> {
   const s = getStorage();
