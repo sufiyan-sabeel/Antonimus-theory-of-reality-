@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IncomeService } from "@/lib/services/income.service";
 import { CategoryService } from "@/lib/services/category.service";
 import { Input, Select } from "@/components/ui/input";
@@ -8,14 +8,13 @@ import { Card } from "@/components/ui/card";
 import { todayISODate } from "@/lib/domain/common";
 import { ConfirmDialog } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/toast";
-import { useSearchParams } from "next/navigation";
 
 export default function IncomePage() {
   const { toast } = useToast();
-  const params = useSearchParams();
   const [incomes, setIncomes] = useState(() => IncomeService.getAll());
   const [categories] = useState(() => CategoryService.getAll().filter((c) => c.type === "income" || c.type === "both"));
-  const [showForm, setShowForm] = useState(params.get("action") === "new");
+  const [showForm, setShowForm] = useState(false);
+  useEffect(() => { if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("action") === "new") setShowForm(true); }, []);
   const [editing, setEditing] = useState<string | null>(null);
   const [form, setForm] = useState({ amount: "", sourceCategoryId: "", date: todayISODate(), description: "" });
   const [deleteId, setDeleteId] = useState<string | null>(null);

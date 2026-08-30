@@ -8,15 +8,11 @@ import { Card } from "@/components/ui/card";
 import { todayISODate } from "@/lib/domain/common";
 import { ConfirmDialog } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/toast";
-import { useSearchParams, useRouter } from "next/navigation";
-
 export default function ExpensesPage() {
   const { toast } = useToast();
-  const params = useSearchParams();
-  const router = useRouter();
   const [expenses, setExpenses] = useState(() => ExpenseService.getAll());
   const [categories] = useState(() => CategoryService.getAll().filter((c) => c.type !== "income"));
-  const [showForm, setShowForm] = useState(params.get("action") === "new");
+  const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<string | null>(null);
   const [form, setForm] = useState({ amount: "", categoryId: "", date: todayISODate(), merchant: "", description: "", paymentMethod: "" });
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -24,7 +20,7 @@ export default function ExpensesPage() {
 
   const refresh = () => { setExpenses(ExpenseService.getAll()); if (typeof window !== "undefined") window.dispatchEvent(new Event("calexpenses:refresh")); };
 
-  useEffect(() => { if (params.get("action") === "new") setShowForm(true); }, [params]);
+  useEffect(() => { if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("action") === "new") setShowForm(true); }, []);
 
   const submit = () => {
     const amount = parseFloat(form.amount);

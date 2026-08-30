@@ -22,8 +22,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: Cal-Expenses/package-lock.json
 
       - name: Install deps (Cal-Expenses)
         working-directory: Cal-Expenses
