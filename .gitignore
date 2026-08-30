@@ -30,6 +30,14 @@
 !.github/workflows/
 !.github/workflows/codeql-analysis.yml
 !.github/workflows/security-audit.yml
+!.github/workflows/cal-expenses-pages.yml
+!Cal-Expenses/
+!Cal-Expenses/**
+Cal-Expenses/node_modules/
+Cal-Expenses/.next/
+Cal-Expenses/out/
+Cal-Expenses/.env
+Cal-Expenses/.env.local
 !SECURITY.md
 !LICENSE
 !.gitignore

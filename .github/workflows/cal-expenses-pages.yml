@@ -1,0 +1,64 @@
+name: Deploy CAL-EXPENSES to GitHub Pages (docs/cal-expenses)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Cal-Expenses/**"
+      - ".github/workflows/cal-expenses-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: Cal-Expenses/package-lock.json
+
+      - name: Install deps (Cal-Expenses)
+        working-directory: Cal-Expenses
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Type check
+        working-directory: Cal-Expenses
+        run: npm run type-check || npx tsc --noEmit
+
+      - name: Build static export
+        working-directory: Cal-Expenses
+        env:
+          NEXT_EXPORT: "true"
+        run: npm run build
+
+      - name: Copy export to docs/cal-expenses
+        run: |
+          rm -rf docs/cal-expenses
+          mkdir -p docs/cal-expenses
+          cp -r Cal-Expenses/out/* docs/cal-expenses/
+          # Ensure .nojekyll for GitHub Pages
+          touch docs/.nojekyll
+          touch docs/cal-expenses/.nojekyll
+          # Add redirect index if needed
+          echo "CAL-EXPENSES deployed $(date -u)" > docs/cal-expenses/DEPLOYED.txt
+
+      - name: Commit and push docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/cal-expenses docs/.nojekyll
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
+          git commit -m "deploy: CAL-EXPENSES Pages $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]"
+          git push
